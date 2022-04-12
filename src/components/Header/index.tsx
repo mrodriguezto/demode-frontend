@@ -1,6 +1,16 @@
 import { Link } from "react-router-dom";
 import Logo from "../../assets/logo-white.png";
 
+/*
+
+TODO: 
+
+Modificar el tamaño del reproductor
+para que no se vea cortado. O en su defecto, el
+tamaño del navbar o el contenedor
+
+*/
+
 const navLinks = [
   { path: "/news", title: "NOTICIAS" },
   { path: "/concerts", title: "CONCIERTOS" },
@@ -21,8 +31,15 @@ const Header = () => {
           ))}
         </ul>
       </nav>
-      <div className='ml-auto border border-white text-gray-50 text-xs w-52 h-16'>
-        Acá va a el reproductor
+      <div className='ml-auto w-50 h-16'>
+
+      <iframe 
+        src="https://open.spotify.com/embed/artist/3GqamhwxJhnybRLVUmEb1s?utm_source=generator" 
+        width="100%" 
+        frameBorder="0" 
+        className='text-xs w-50 h-16'
+        >
+        </iframe>
       </div>
     </header>
   );

@@ -1,6 +1,14 @@
 import HeroImg from "../assets/hero-img.jpg";
 import Logo from "../assets/logo-white.png";
 import Button from "../components/Button";
+import ContentPreviewer from "../components/ContentPreviewer";
+
+const contentLinks = [
+  { path: "/photos", title: "Fotos" },
+  { path: "/videos", title: "Videos" },
+  { path: "/products", title: "Productos" },
+  { path: "/contact", title: "Contacto" },
+];
 
 const LandingPage = () => {
   return (
@@ -15,6 +23,12 @@ const LandingPage = () => {
           <img className='' src={Logo} alt='Demodé logo' />
         </div>
       </div>
+
+      {contentLinks.map(({ path, title }, index) => (
+        <ContentPreviewer key={index} path={path} title={title}>
+        </ContentPreviewer>
+      ))}
+
       <div className='text-white p-10 m-24 bg-darkGray'>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum tempora
         delectus tempore esse, debitis animi enim magni recusandae, modi
