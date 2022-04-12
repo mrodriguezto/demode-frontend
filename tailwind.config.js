@@ -8,6 +8,9 @@ module.exports = {
         dark: "#130101",
         darkGray: "#0A0A0A",
       },
+      backgroundImage: {
+        "hero-img": "url('./assets/hero-img.jpg')",
+      },
     },
   },
   plugins: [],

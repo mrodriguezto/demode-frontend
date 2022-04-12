@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Logo from "../../assets/logo-white.png";
+import Button from "../Button";
 
 /*
 
@@ -14,15 +15,13 @@ tamaño del navbar o el contenedor
 const navLinks = [
   { path: "/news", title: "NOTICIAS" },
   { path: "/concerts", title: "CONCIERTOS" },
-  { path: "/about", title: "CONÓCENOS" },
-  { path: "/contact", title: "CONTÁCTANOS" },
 ];
 
 const Header = () => {
   return (
-    <header className='w-full bg-dark bg-opacity-5 flex items-center absolute py-3 px-2 sm:px-4 md:px-8 lg:px-12 xl:px-16 z-10'>
+    <header className='w-full bg-gradient-to-b from-[#00000096] via-[#00000078] to-[#00000000] flex items-center absolute py-3 px-2 sm:px-4 md:px-8 lg:px-12 xl:px-16 z-10'>
       <Link to='/'>
-        <img className='h-12' src={Logo} alt='Demodé logo' />
+        <img className='h-14' src={Logo} alt='Demodé logo' />
       </Link>
       <nav className='hidden md:block px-4'>
         <ul className='text-white flex font-semibold text-md px-6'>
@@ -31,15 +30,28 @@ const Header = () => {
           ))}
         </ul>
       </nav>
-      <div className='ml-auto w-50 h-16'>
-
-      <iframe 
-        src="https://open.spotify.com/embed/artist/3GqamhwxJhnybRLVUmEb1s?utm_source=generator" 
-        width="100%" 
-        frameBorder="0" 
-        className='text-xs w-50 h-16'
-        >
-        </iframe>
+      <div className='ml-auto w-50 h-20 rounded-sm flex items-center'>
+        <iframe
+          src='https://open.spotify.com/embed/artist/3GqamhwxJhnybRLVUmEb1s?utm_source=generator'
+          frameBorder='0'
+          className='text-xs w-50 h-20 rounded-md shadow-lg'
+        />
+        <Button size='sm' color='black' className='ml-2'>
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            className='h-6 w-6 text-white'
+            fill='none'
+            viewBox='0 0 24 24'
+            stroke='currentColor'
+            strokeWidth={2}
+          >
+            <path
+              strokeLinecap='round'
+              strokeLinejoin='round'
+              d='M4 6h16M4 12h16M4 18h16'
+            />
+          </svg>
+        </Button>
       </div>
     </header>
   );
