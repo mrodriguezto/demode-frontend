@@ -53,7 +53,7 @@ const LandingPage = () => {
         dolore illo magni molestias excepturi corrupti error iste dignissimos
         iusto quidem! At officiis tempore tenetur illo! Blanditiis natus magnam
         earum error quas beatae consequuntur.
-        <Button color='secondary' size='sm' className='my-5'>
+        <Button color='primary' size='sm' className='my-5'>
           Presióname
         </Button>
       </div>
