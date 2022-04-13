@@ -1,6 +1,8 @@
 import React from 'react';
 import Title from '../components/Title';
+import HeroImg from "../assets/hero-img.jpg";
 import HomeThumbnail from '../components/HomeThumbnail';
+import SmallMemberInfo from '../components/SmallMemberInfo';
 
 const About = () => {
   return (
@@ -35,7 +37,7 @@ const About = () => {
 
         <Title title="Conoce a los integrantes"></Title>
 
-        <div className='text-white p-10 ml-80 bg-darkGray'>
+        <SmallMemberInfo name='Dan' photoSrc={HeroImg} position="right" color='primary'>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum tempora
         delectus tempore esse, debitis animi enim magni recusandae, modi
         repudiandae iste aliquid quisquam veritatis corporis distinctio.
@@ -46,9 +48,9 @@ const About = () => {
         voluptate molestiae sit quis magnam voluptates maiores mollitia placeat
         consectetur? Sapiente nesciunt iure officia porro aut, doloremque
         aliquam magni deserunt beatae velit cupiditate corporis tempore,
-        </div>
+        </SmallMemberInfo>
 
-        <div className='text-black p-10 mr-80 bg-gray-300'>
+        <SmallMemberInfo name='Dan' photoSrc={HeroImg} position="left" color='secondary'>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum tempora
         delectus tempore esse, debitis animi enim magni recusandae, modi
         repudiandae iste aliquid quisquam veritatis corporis distinctio.
@@ -59,9 +61,9 @@ const About = () => {
         voluptate molestiae sit quis magnam voluptates maiores mollitia placeat
         consectetur? Sapiente nesciunt iure officia porro aut, doloremque
         aliquam magni deserunt beatae velit cupiditate corporis tempore,
-        </div>
+        </SmallMemberInfo>
 
-        <div className='text-white p-10 ml-80 bg-darkGray'>
+        <SmallMemberInfo name='Dan' photoSrc={HeroImg} position="right" color='primary'>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum tempora
         delectus tempore esse, debitis animi enim magni recusandae, modi
         repudiandae iste aliquid quisquam veritatis corporis distinctio.
@@ -72,9 +74,9 @@ const About = () => {
         voluptate molestiae sit quis magnam voluptates maiores mollitia placeat
         consectetur? Sapiente nesciunt iure officia porro aut, doloremque
         aliquam magni deserunt beatae velit cupiditate corporis tempore,
-        </div>
+        </SmallMemberInfo>
 
-        <div className='text-black p-10 mr-80 bg-gray-300'>
+        <SmallMemberInfo name='Dan' photoSrc={HeroImg} position="left" color='secondary'>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum tempora
         delectus tempore esse, debitis animi enim magni recusandae, modi
         repudiandae iste aliquid quisquam veritatis corporis distinctio.
@@ -85,9 +87,9 @@ const About = () => {
         voluptate molestiae sit quis magnam voluptates maiores mollitia placeat
         consectetur? Sapiente nesciunt iure officia porro aut, doloremque
         aliquam magni deserunt beatae velit cupiditate corporis tempore,
-        </div>
+        </SmallMemberInfo>
 
-        <div className='text-white p-10 ml-80 bg-darkGray'>
+        <SmallMemberInfo name='Dan' photoSrc={HeroImg} position="right" color='primary'>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum tempora
         delectus tempore esse, debitis animi enim magni recusandae, modi
         repudiandae iste aliquid quisquam veritatis corporis distinctio.
@@ -98,7 +100,8 @@ const About = () => {
         voluptate molestiae sit quis magnam voluptates maiores mollitia placeat
         consectetur? Sapiente nesciunt iure officia porro aut, doloremque
         aliquam magni deserunt beatae velit cupiditate corporis tempore,
-        </div>
+        </SmallMemberInfo>
+
         <div className="pb-24">
         </div>
     </>  
