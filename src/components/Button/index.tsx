@@ -17,6 +17,7 @@ type Props = {
   size?: "sm" | "md" | "lg";
   children: React.ReactNode;
   className?: string;
+  onClick?: () => void;
 };
 
 const Button = ({
@@ -24,11 +25,15 @@ const Button = ({
   size = "md",
   children,
   className = "",
+  onClick = () => {},
 }: Props) => {
   const classNames =
     buttonSize[size] + " " + buttonColor[color] + " " + className;
   return (
-    <button className={`${classNames} transition ease-linear duration-150`}>
+    <button
+      className={`${classNames} transition ease-linear duration-150`}
+      onClick={onClick}
+    >
       {children}
     </button>
   );
