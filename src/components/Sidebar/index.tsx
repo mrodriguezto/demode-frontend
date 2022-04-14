@@ -101,6 +101,9 @@ const Sidebar = () => {
               </SocialLink>
             ))}
           </ul>
+          <Link to={"/login"} className=" text-center ">
+            <p className="text-white m-6 ">Iniciar sesión</p>
+          </Link>
         </div>
       </aside>
     </>
