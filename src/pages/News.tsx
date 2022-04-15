@@ -7,7 +7,6 @@ const News = () => {
     return(
         <>
         <PageTitle title='Noticias'/>
-        <SectionTitle title="Noticias" ></SectionTitle>
 
         </>
     );

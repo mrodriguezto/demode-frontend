@@ -3,8 +3,6 @@ Este componente irá en el /about será la tarjeta de la
 info de cada persona con 
 */
 
-import { Children } from "react";
-
 const positions = {
     right: "flex-row",
     left: "flex-row-reverse"

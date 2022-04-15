@@ -11,7 +11,7 @@ const PageTitle = ({
     className = "",
   }: Props) => {
     return(
-        <h1 className="mt-40 text-white text-5xl text-center">{title}</h1>
+        <h1 className="mt-40 select-none text-white text-5xl text-center">{title}</h1>
     );
 }
 

@@ -1,13 +1,14 @@
-import React from 'react';
-import Logo from "../assets/logo-white.png";
 import SectionTitle from '../components/SectionTitle';
 import HeroImg from "../assets/hero-img.jpg";
-import HomeThumbnail from '../components/HomeThumbnail';
+import PageTitle from '../components/PageTitle';
 import SmallMemberInfo from '../components/SmallMemberInfo';
 
 const About = () => {
   return (
     <>
+
+        <PageTitle title="Conócenos"/>
+
         <SectionTitle title="Historia de la banda" className=' mt-10'></SectionTitle>
 
         <div className='text-black p-10 mx-48 bg-gray-300'>
