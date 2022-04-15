@@ -13,7 +13,7 @@ import {
 const sidebarLinks = [
   { path: "/news", title: "NOTICIAS" },
   { path: "/concerts", title: "CONCIERTOS" },
-  { path: "/merchandise", title: "MERCHANDISE" },
+  { path: "/products", title: "PRODUCTOS" },
   { path: "/about", title: "CONÓCENOS" },
   { path: "/contact", title: "CONTÁCTANOS" },
 ];

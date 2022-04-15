@@ -21,7 +21,7 @@ const textSize = {
     className?: string;
   };
 
-  const Title = ({
+  const SectionTitle = ({
     title = "Content",
     color = "primary",
     size = "md",
@@ -37,4 +37,4 @@ const textSize = {
     );
   };
   
-  export default Title;
+  export default SectionTitle;

@@ -1,13 +1,15 @@
-import React from 'react';
-import Title from '../components/Title';
+import SectionTitle from '../components/SectionTitle';
 import HeroImg from "../assets/hero-img.jpg";
-import HomeThumbnail from '../components/HomeThumbnail';
+import PageTitle from '../components/PageTitle';
 import SmallMemberInfo from '../components/SmallMemberInfo';
 
 const About = () => {
   return (
     <>
-        <Title title="Historia de la banda"></Title>
+
+        <PageTitle title="Conócenos"/>
+
+        <SectionTitle title="Historia de la banda" className=' mt-10'></SectionTitle>
 
         <div className='text-black p-10 mx-48 bg-gray-300'>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum tempora 
@@ -35,7 +37,7 @@ const About = () => {
         earum error quas beatae consequuntur.
         </div>
 
-        <Title title="Conoce a los integrantes"></Title>
+        <SectionTitle title="Conoce a los integrantes"></SectionTitle>
 
         <SmallMemberInfo name='Diego' photoSrc={HeroImg} position="right" color='primary'>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum tempora
