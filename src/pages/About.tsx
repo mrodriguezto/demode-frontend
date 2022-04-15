@@ -37,7 +37,33 @@ const About = () => {
 
         <Title title="Conoce a los integrantes"></Title>
 
-        <SmallMemberInfo name='Dan' photoSrc={HeroImg} position="right" color='primary'>
+        <SmallMemberInfo name='Diego' photoSrc={HeroImg} position="right" color='primary'>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum tempora
+        delectus tempore esse, debitis animi enim magni recusandae, modi
+        repudiandae iste aliquid quisquam veritatis corporis distinctio.
+        Pariatur, veritatis. Ducimus ut veritatis dolores ad assumenda vel
+        corporis consectetur, adipisci, optio ratione dignissimos eligendi
+        obcaecati saepe exercitationem dolorem deleniti, quisquam eum iure
+        quibusdam neque cumque magni placeat unde nihil. Ratione sed, ipsam
+        voluptate molestiae sit quis magnam voluptates maiores mollitia placeat
+        consectetur? Sapiente nesciunt iure officia porro aut, doloremque
+        aliquam magni deserunt beatae velit cupiditate corporis tempore,
+        </SmallMemberInfo>
+
+        <SmallMemberInfo name='David' photoSrc={HeroImg} position="left" color='secondary'>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum tempora
+        delectus tempore esse, debitis animi enim magni recusandae, modi
+        repudiandae iste aliquid quisquam veritatis corporis distinctio.
+        Pariatur, veritatis. Ducimus ut veritatis dolores ad assumenda vel
+        corporis consectetur, adipisci, optio ratione dignissimos eligendi
+        obcaecati saepe exercitationem dolorem deleniti, quisquam eum iure
+        quibusdam neque cumque magni placeat unde nihil. Ratione sed, ipsam
+        voluptate molestiae sit quis magnam voluptates maiores mollitia placeat
+        consectetur? Sapiente nesciunt iure officia porro aut, doloremque
+        aliquam magni deserunt beatae velit cupiditate corporis tempore,
+        </SmallMemberInfo>
+
+        <SmallMemberInfo name='Julio' photoSrc={HeroImg} position="right" color='primary'>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum tempora
         delectus tempore esse, debitis animi enim magni recusandae, modi
         repudiandae iste aliquid quisquam veritatis corporis distinctio.
@@ -63,33 +89,7 @@ const About = () => {
         aliquam magni deserunt beatae velit cupiditate corporis tempore,
         </SmallMemberInfo>
 
-        <SmallMemberInfo name='Dan' photoSrc={HeroImg} position="right" color='primary'>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum tempora
-        delectus tempore esse, debitis animi enim magni recusandae, modi
-        repudiandae iste aliquid quisquam veritatis corporis distinctio.
-        Pariatur, veritatis. Ducimus ut veritatis dolores ad assumenda vel
-        corporis consectetur, adipisci, optio ratione dignissimos eligendi
-        obcaecati saepe exercitationem dolorem deleniti, quisquam eum iure
-        quibusdam neque cumque magni placeat unde nihil. Ratione sed, ipsam
-        voluptate molestiae sit quis magnam voluptates maiores mollitia placeat
-        consectetur? Sapiente nesciunt iure officia porro aut, doloremque
-        aliquam magni deserunt beatae velit cupiditate corporis tempore,
-        </SmallMemberInfo>
-
-        <SmallMemberInfo name='Dan' photoSrc={HeroImg} position="left" color='secondary'>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum tempora
-        delectus tempore esse, debitis animi enim magni recusandae, modi
-        repudiandae iste aliquid quisquam veritatis corporis distinctio.
-        Pariatur, veritatis. Ducimus ut veritatis dolores ad assumenda vel
-        corporis consectetur, adipisci, optio ratione dignissimos eligendi
-        obcaecati saepe exercitationem dolorem deleniti, quisquam eum iure
-        quibusdam neque cumque magni placeat unde nihil. Ratione sed, ipsam
-        voluptate molestiae sit quis magnam voluptates maiores mollitia placeat
-        consectetur? Sapiente nesciunt iure officia porro aut, doloremque
-        aliquam magni deserunt beatae velit cupiditate corporis tempore,
-        </SmallMemberInfo>
-
-        <SmallMemberInfo name='Dan' photoSrc={HeroImg} position="right" color='primary'>
+        <SmallMemberInfo name='Yair' photoSrc={HeroImg} position="right" color='primary'>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum tempora
         delectus tempore esse, debitis animi enim magni recusandae, modi
         repudiandae iste aliquid quisquam veritatis corporis distinctio.

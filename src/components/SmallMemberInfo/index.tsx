@@ -3,11 +3,15 @@ Este componente irá en el /about será la tarjeta de la
 info de cada persona con 
 */
 
-import { Children } from "react";
+/*
+TODO:
+- Centrar verticalmente el nombre del miembro de la banda
+al hacer hover sobre la imagen
+*/
 
 const positions = {
     right: "flex-row",
-    left: "flex-row-reverse"
+    left: "flex-row-reverse space-x-reverse"
 }
 
 const colors = {
@@ -36,9 +40,14 @@ const SmallMemberInfo = ({
 }:Props) => {
 
     return(
-    <div className={" m-6 flex flex-nowrap " + positions[position]}>
-        <img src={photoSrc} alt={name} 
-        className = "m-10 aspect-square w-1/5 rounded-2xl"/>
+    <div className={" m-10 flex "+positions[position]+" flex-nowrap space-x-4 "}>
+        <div className="w-2/3 bg-black rounded-2xl relative">
+            <span className=
+            "absolute w-full h-full text-2xl text-white bg-black select-none text-center opacity-0 hover:opacity-50"
+            >{name}</span>
+            <img src={photoSrc} alt={name} className=" aspect-square rounded-2xl hover:opacity-50" />
+        </div>
+
         <div className={colors[color] + " m-10 p-6"}>
             {children}
         </div>
