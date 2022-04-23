@@ -62,7 +62,7 @@ const Sidebar = () => {
     <>
       <Button
         size='sm'
-        color='black'
+        color='transparent'
         className='ml-2 absolute z-10 top-8 right-4 md:right-6'
         onClick={() => setIsOpen((value) => !value)}
       >
@@ -78,7 +78,7 @@ const Sidebar = () => {
         <div className='overflow-y-auto h-full py-4 px-3 bg-darkGray'>
           <Button
             size='sm'
-            color='black'
+            color='darkGray'
             className='float-right z-10 mb-4 md:right-6'
             onClick={() => setIsOpen((value) => !value)}
           >
@@ -117,7 +117,7 @@ const MenuLink = ({ path, title }: MenuLinkProps) => {
     <li>
       <Link
         to={path}
-        className='flex items-center p-2 text-base font-normal rounded-lg text-white hover:bg-gray-700'
+        className='flex items-center p-2 text-base font-normal rounded-sm text-white hover:bg-gray-700'
       >
         <span className='ml-2'>{title}</span>
       </Link>

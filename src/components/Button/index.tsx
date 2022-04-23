@@ -5,15 +5,24 @@ const buttonSize = {
 };
 
 const buttonColor = {
+  transparent: "bg-transparent hover:bg-gray-900",
   primary: "bg-primary hover:bg-secondary",
   secondary: "bg-secondary hover:bg-primary",
   dark: "bg-dark hover:bg-gray-800",
   darkGray: "bg-darkGray hover:bg-gray-800",
   black: "bg-black hover:bg-gray-900",
+  alterGray: "bg-alterGray hover:bg-gray-900",
 };
 
 type Props = {
-  color?: "primary" | "secondary" | "dark" | "darkGray" | "black";
+  color?:
+    | "transparent"
+    | "primary"
+    | "secondary"
+    | "dark"
+    | "darkGray"
+    | "black"
+    | "alterGray";
   size?: "sm" | "md" | "lg";
   children: React.ReactNode;
   className?: string;

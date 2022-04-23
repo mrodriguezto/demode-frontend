@@ -7,6 +7,7 @@ module.exports = {
         secondary: "#BB0707",
         dark: "#130101",
         darkGray: "#0A0A0A",
+        alterGray: "#212121",
       },
       backgroundImage: {
         "hero-img": "url('./assets/hero-img.jpg')",
