@@ -70,7 +70,7 @@ const Sidebar = () => {
       </Button>
 
       <aside
-        className={`w-[40vw] sm:w-[35vw] md:w-72 h-full fixed right-0 top-0 z-50 ${
+        className={`w-3/5 sm:w-1/2 md:w-72 h-full fixed right-0 top-0 z-50 ${
           isOpen ? "translate-x-0" : "translate-x-full"
         } ease-out duration-200`}
         aria-label='Sidebar'

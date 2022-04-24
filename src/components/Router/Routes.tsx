@@ -9,7 +9,7 @@ import Photos from "../../pages/Photos";
 import Videos from "../../pages/Videos";
 import Contact from "../../pages/Contact";
 import Products from "../../pages/Products";
-
+import LoginPage from "../../pages/LoginPage";
 
 const Routes = () => {
   return (
@@ -24,6 +24,7 @@ const Routes = () => {
       <Route path='/videos' element={<Videos />} />
       <Route path='/products' element={<Products />} />
       <Route path='/contact' element={<Contact />} />
+      <Route path='/dmd-login' element={<LoginPage />} />
     </DOMRoutes>
   );
 };

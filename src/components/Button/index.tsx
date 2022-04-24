@@ -1,7 +1,7 @@
 const buttonSize = {
-  sm: "py-2 px-2 text-sm",
-  md: "py-3 px-4",
-  lg: "py-4 px-6 text-lg",
+  sm: "py-2 px-3 text-sm",
+  md: "py-3 px-5",
+  lg: "py-4 px-8 text-lg",
 };
 
 const buttonColor = {
@@ -27,6 +27,7 @@ type Props = {
   children: React.ReactNode;
   className?: string;
   onClick?: () => void;
+  type?: "button" | "submit" | "reset";
 };
 
 const Button = ({
@@ -35,13 +36,15 @@ const Button = ({
   children,
   className = "",
   onClick = () => {},
+  type = "button",
 }: Props) => {
   const classNames =
     buttonSize[size] + " " + buttonColor[color] + " " + className;
   return (
     <button
-      className={`${classNames} transition ease-linear duration-150`}
+      className={`${classNames} font-semibold rounded-sm transition ease-linear duration-150`}
       onClick={onClick}
+      type={type}
     >
       {children}
     </button>
