@@ -1,6 +1,6 @@
 const buttonSize = {
-  sm: "py-2 px-3 text-sm",
-  md: "py-3 px-5",
+  sm: "py-2 px-4 text-sm",
+  md: "py-3 px-6",
   lg: "py-4 px-8 text-lg",
 };
 

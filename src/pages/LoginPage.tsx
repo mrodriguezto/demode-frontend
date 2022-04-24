@@ -1,9 +1,16 @@
 import { useFormik } from "formik";
+import { useContext } from "react";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import Card from "../components/Card";
 import TextField from "../components/TextField";
+import { AuthContext } from "../context/AuthContext";
+import { AxiosErrorResponse } from "../types/dataTypes";
 
 const LoginPage = () => {
+  const { signin } = useContext(AuthContext);
+  const navigate = useNavigate();
   const { values, handleChange, handleSubmit, errors, touched, handleBlur } =
     useFormik({
       initialValues: {
@@ -13,7 +20,15 @@ const LoginPage = () => {
       onSubmit: () => login(),
     });
 
-  const login = () => {};
+  const login = async () => {
+    try {
+      await signin(values);
+      navigate("/");
+    } catch (error: any) {
+      const err = error as AxiosErrorResponse;
+      toast.error(err.response.data.error.message);
+    }
+  };
 
   return (
     <div className='text-white pt-[112px] min-h-full'>
@@ -42,7 +57,7 @@ const LoginPage = () => {
               required
             />
             <div className='w-full flex justify-center'>
-              <Button className='px-9 mt-3 shadow-md' type='submit' size='sm'>
+              <Button className='mt-3 shadow-md px-9' type='submit' size='sm'>
                 Ingresar
               </Button>
             </div>

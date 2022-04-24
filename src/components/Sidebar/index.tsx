@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "../Button";
 import {
@@ -9,6 +9,8 @@ import {
   RiSpotifyLine,
   RiYoutubeLine,
 } from "react-icons/ri";
+import UserInfo from "../UserInfo";
+import { AuthContext } from "../../context/AuthContext";
 
 const sidebarLinks = [
   { path: "/news", title: "NOTICIAS" },
@@ -57,34 +59,34 @@ const socialLinks = [
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { status } = useContext(AuthContext);
 
   return (
     <>
       <Button
         size='sm'
         color='transparent'
-        className='ml-2 absolute z-10 top-8 right-4 md:right-6'
+        className='ml-2 absolute z-10 top-8 right-4 md:right-6 px-2'
         onClick={() => setIsOpen((value) => !value)}
       >
         <RiMenuFill className='h-6 w-6 text-white' />
       </Button>
 
       <aside
-        className={`w-3/5 sm:w-1/2 md:w-72 h-full fixed right-0 top-0 z-50 ${
+        className={`w-full sm:w-1/2 md:w-72 h-full fixed right-0 top-0 z-50 ease-out duration-200 ${
           isOpen ? "translate-x-0" : "translate-x-full"
-        } ease-out duration-200`}
-        aria-label='Sidebar'
+        }`}
       >
-        <div className='overflow-y-auto h-full py-4 px-3 bg-darkGray'>
+        <div className='flex flex-col overflow-y-auto h-full py-4 px-3 bg-darkGray'>
           <Button
             size='sm'
             color='darkGray'
-            className='float-right z-10 mb-4 md:right-6'
+            className='z-10 mt-2 mb-4 px-2 self-end'
             onClick={() => setIsOpen((value) => !value)}
           >
             <RiCloseFill className='h-6 w-6 text-white' />
           </Button>
-          <ul className='space-y-2 clear-both'>
+          <ul className='space-y-2'>
             {sidebarLinks.map(({ path, title }, index) => (
               <MenuLink key={index} path={path} title={title} />
             ))}
@@ -94,13 +96,14 @@ const Sidebar = () => {
             Nuestras Redes
           </h6>
           <ul className='flex justify-around items-center'>
-            x
             {socialLinks.map(({ Icon, path, title }) => (
               <SocialLink title={title} path={path}>
                 {Icon}
               </SocialLink>
             ))}
           </ul>
+          <div className='flex-1' />
+          {status === "authenticated" && <UserInfo />}
         </div>
       </aside>
     </>

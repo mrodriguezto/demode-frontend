@@ -1,3 +1,15 @@
+export type ErrorResponse = {
+  error: {
+    message: string;
+  };
+};
+
+export type AxiosErrorResponse = {
+  response: {
+    data: ErrorResponse;
+  };
+};
+
 export type LoginResponse = {
   user: User;
   token: string;
