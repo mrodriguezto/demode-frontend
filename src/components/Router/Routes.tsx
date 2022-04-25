@@ -4,7 +4,7 @@ import LandingPage from "../../pages/LandingPage";
 import NewsPage from "../../pages/NewsPage";
 import Concerts from "../../pages/Concerts";
 
-import About from "../../pages/About";
+import AboutPage from "../../pages/AboutPage";
 import Photos from "../../pages/Photos";
 import Videos from "../../pages/Videos";
 import Contact from "../../pages/Contact";
@@ -15,7 +15,6 @@ import PublicRoutes from "./PublicRoutes";
 //////////////Modals
 import Modals from "../../pages/Modals(pruebas)";
 
-
 const Routes = () => {
   return (
     <DOMRoutes>
@@ -23,7 +22,7 @@ const Routes = () => {
       <Route path='/news' element={<NewsPage />} />
       <Route path='/concerts' element={<Concerts />} />
 
-      <Route path='/about' element={<About />} />
+      <Route path='/about' element={<AboutPage />} />
 
       <Route path='/photos' element={<Photos />} />
       <Route path='/videos' element={<Videos />} />
@@ -39,12 +38,7 @@ const Routes = () => {
       <Route path='*' element={<Navigate to='/' />} />
       <Route path='/dmd-login' element={<LoginPage />} />
 
-
-
       <Route path='/modals' element={<Modals />} />
-
-
-
     </DOMRoutes>
   );
 };
