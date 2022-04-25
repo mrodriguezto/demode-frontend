@@ -3,50 +3,61 @@ import useUploadFile from "../../hooks/useUploadFile";
 import { useState } from "react";
 import { useFormik } from "formik";
 import demodeApi from "../../api/axios";
+import toast from "react-hot-toast";
 import TextField from "../TextField";
 import TextArea from "../TextArea";
 import Button from "../Button";
 import Spinner from "../Spinner";
 
-type Props = {
-  callback: (data: any) => void;
-  id: string;
-  initialValues: {
-    title: string;
-    description: string;
-    categories: string;
-    url: string;
-  };
+const initialValues = {
+  title: "",
+  content: "",
 };
 
-const EditProductModal = ({ callback, id, initialValues }: Props) => {
+type Props = {
+  callback: (data: any) => void;
+};
+
+const NewNewsModal = ({ callback }: Props) => {
+  const { uploadFile } = useUploadFile("news");
   const [isSending, setIsSending] = useState(false);
+  const [img, setImg] = useState<File>();
 
   const { values, handleChange, handleSubmit, setValues } = useFormik({
     initialValues,
-    onSubmit: () => updateProduct(),
+    onSubmit: () => uploadFiles(),
   });
 
-  const updateProduct = () => {
+  const uploadFiles = async () => {
     setIsSending(true);
+    uploadFile(img, registerProduct);
+  };
+
+  const registerProduct = (url: string) => {
     demodeApi
-      .put(`/products/${id}/edit`, {
+      .post("/posts/new", {
         title: values.title,
-        description: values.description,
-        categories: values.categories,
-        url: values.url,
+        content: values.content,
+        img: url,
       })
       .then((res) => {
-        window.location.reload();
+        toast.success("Artículo registrado");
 
         setValues(initialValues);
+        setImg(undefined);
         setIsSending(false);
         callback(res.data);
       });
   };
 
+  const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const files = event.target.files;
+    if (!files || !files[0]) return;
+    setImg(files[0]);
+  };
+
   return (
-    <Modal modalId={`editProductModal${id}`}>
+    <Modal modalId='newNewsModal'>
       <h6 className='font-semibold text-xl'>NUEVO ARTÍCULO</h6>
       <br />
       <form onSubmit={handleSubmit} noValidate>
@@ -60,28 +71,28 @@ const EditProductModal = ({ callback, id, initialValues }: Props) => {
         />
         <TextArea
           onChange={handleChange}
-          label='Descripción'
-          name='description'
-          value={values.description}
-          placeholder='Ingrese la descripción...'
+          label='Contenido'
+          name='content'
+          value={values.content}
+          placeholder='Ingrese el contenido...'
           required
         />
-        <TextField
-          onChange={handleChange}
-          label='Categoría'
-          name='categories'
-          value={values.categories}
-          placeholder='Ingrese la categoría...'
-          required
-        />
-        <TextField
-          onChange={handleChange}
-          label='Enlace'
-          name='url'
-          value={values.url}
-          placeholder='Ingrese el enlace...'
-          required
-        />
+
+        <div className='w-full flex'>
+          <label className='block'>
+            <span className='sr-only'>Elegir una foto</span>
+            <input
+              onChange={handleImageChange}
+              type='file'
+              className='block w-full text-sm text-slate-500
+                    file:mr-4 file:py-2 file:px-4
+                    file:rounded-sm file:border-0
+                    file:text-sm file:font-semibold
+                    file:bg-alterGray file:text-white
+                    hover:file:bg-darkGray '
+            />
+          </label>
+        </div>
         <div className='w-full flex justify-left'>
           <Button
             className='px-9 mt-3 shadow-md relative'
@@ -93,10 +104,10 @@ const EditProductModal = ({ callback, id, initialValues }: Props) => {
               <div className='w-full h-full flex gap-x-2'>
                 <Spinner size='inline' color='lightGray' />
 
-                <p>Actualizando...</p>
+                <p>Enviando...</p>
               </div>
             ) : (
-              "Actualizar"
+              "Enviar"
             )}
           </Button>
         </div>
@@ -105,4 +116,4 @@ const EditProductModal = ({ callback, id, initialValues }: Props) => {
   );
 };
 
-export default EditProductModal;
+export default NewNewsModal;

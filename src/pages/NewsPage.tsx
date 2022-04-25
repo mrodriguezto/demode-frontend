@@ -1,16 +1,15 @@
-import { Link } from "react-router-dom";
-import WideCard from "../components/WideCard/WideCard";
 import Spinner from "../components/Spinner";
-import dayjs from "dayjs";
 import "dayjs/locale/es";
 import PageTitle from "../components/PageTitle";
 import useNews from "../hooks/useNews";
 import NewsCard from "../components/NewsCard";
 import { AuthContext } from "../context/AuthContext";
 import { useContext } from "react";
+import Button from "../components/Button";
+import NewNewsModal from "../components/Modal/NewNewsModal";
 
 const NewsPage = () => {
-  const { isLoading, news } = useNews();
+  const { isLoading, news, addNews } = useNews();
   const { status } = useContext(AuthContext);
 
   return (
@@ -24,18 +23,30 @@ const NewsPage = () => {
       ) : news.length == 0 ? (
         <div className='text-center'>Aún no hay publicaciones.</div>
       ) : (
-        <div className='min-h-full grid md:grid-cols-2 gap-x-8 gap-y-4 container lg:max-w-5xl mx-auto px-0 sm:px-8 py-10'>
-          {news.map((item) => (
-            <NewsCard
-              imgUrl={item.img}
-              title={item.title}
-              date={item.createdAt}
-              url='/'
-              description={item.content}
-            />
-          ))}
+        <div className='min-h-full container lg:max-w-5xl mx-auto px-0 sm:px-8 py-4 mb-10'>
+          {status === "authenticated" && (
+            <div className='flex justify-end mb-8'>
+              <Button dataToggle='modal' dataTarget='#newNewsModal'>
+                Añadir nuevo artículo
+              </Button>
+            </div>
+          )}
+          <div className='min-h-full grid md:grid-cols-2 gap-x-8 gap-y-4 '>
+            {news.map((item) => (
+              <NewsCard
+                id={item._id}
+                imgUrl={item.img}
+                title={item.title}
+                date={item.createdAt}
+                url='/'
+                content={item.content}
+                admin={status === "authenticated"}
+              />
+            ))}
+          </div>
         </div>
       )}
+      <NewNewsModal callback={addNews} />
     </div>
   );
 };

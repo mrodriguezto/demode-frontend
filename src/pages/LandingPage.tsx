@@ -49,6 +49,7 @@ const LandingPage = () => {
             <div className='min-h-full grid md:grid-cols-2 gap-x-8 gap-y-4 container lg:max-w-5xl mx-auto px-0 sm:px-8 py-10'>
               {previewData?.events.map((item) => (
                 <EventCard
+                  id={item._id}
                   url={item.url}
                   title={item.title}
                   starts_at={item.starts_at}
@@ -68,11 +69,12 @@ const LandingPage = () => {
             <div className='min-h-full grid md:grid-cols-2 gap-x-8 gap-y-4 container lg:max-w-5xl mx-auto px-0 sm:px-8 py-10'>
               {previewData?.posts.map((item) => (
                 <NewsCard
+                  id={item._id}
                   imgUrl={item.img}
                   title={item.title}
                   date={item.createdAt}
                   url='/'
-                  description={item.content}
+                  content={item.content}
                 />
               ))}
             </div>
