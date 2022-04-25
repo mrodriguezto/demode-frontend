@@ -1,14 +1,19 @@
 import Button from "../Button/index";
 
 type Props = {
-  onEdit: () => void;
+  dataToggle: string;
+  dataTarget: string;
   onDelete: () => void;
 };
 
-const CardMenu = ({ onEdit, onDelete }: Props) => {
+const CardMenu = ({ dataToggle, dataTarget, onDelete }: Props) => {
   return (
     <div className='absolute bg-darkGray flex flex-col top-10 right-0 shadow-lg'>
-      <Button color='transparent' onClick={onEdit}>
+      <Button
+        color='transparent'
+        dataTarget={dataTarget}
+        dataToggle={dataToggle}
+      >
         Editar
       </Button>
       <Button color='transparent' onClick={onDelete}>

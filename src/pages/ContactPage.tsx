@@ -91,11 +91,7 @@ const Contact = () => {
               >
                 {isSending ? (
                   <div className='w-full h-full flex gap-x-2'>
-                    <Spinner
-                      color='lightGray'
-                      size='sm'
-                      className='w-4 h-4 inline'
-                    />
+                    <Spinner size='inline' color='lightGray' />
                     <p>Enviando...</p>
                   </div>
                 ) : (
