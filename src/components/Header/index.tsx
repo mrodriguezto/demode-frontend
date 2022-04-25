@@ -4,7 +4,7 @@ import Sidebar from "../Sidebar";
 
 const navLinks = [
   { path: "/news", title: "NOTICIAS" },
-  { path: "/concerts", title: "CONCIERTOS" },
+  { path: "/events", title: "CONCIERTOS" },
 ];
 
 const Header = () => {

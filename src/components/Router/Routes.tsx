@@ -2,8 +2,7 @@ import { Navigate, Route, Routes as DOMRoutes } from "react-router-dom";
 
 import LandingPage from "../../pages/LandingPage";
 import NewsPage from "../../pages/NewsPage";
-import Concerts from "../../pages/Concerts";
-
+import EventsPage from "../../pages/EventsPage";
 import AboutPage from "../../pages/AboutPage";
 import Photos from "../../pages/Photos";
 import Videos from "../../pages/Videos";
@@ -20,7 +19,7 @@ const Routes = () => {
     <DOMRoutes>
       <Route path='/' element={<LandingPage />} />
       <Route path='/news' element={<NewsPage />} />
-      <Route path='/concerts' element={<Concerts />} />
+      <Route path='/events' element={<EventsPage />} />
 
       <Route path='/about' element={<AboutPage />} />
 

@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 import Spinner from "../components/Spinner";
 import dayjs from "dayjs";
 import "dayjs/locale/es";
+import PageTitle from "../components/PageTitle";
 
 const NewsPage = () => {
   const [news, setNews] = useState<Post[]>([]);
@@ -29,7 +30,8 @@ const NewsPage = () => {
 
   return (
     <div className='text-white pt-[112px] min-h-full'>
-      <h1 className='my-6 text-center text-3xl'>Noticias</h1>
+      <PageTitle title='Noticias' />
+
       {isLoading ? (
         <div className='w-full flex items-center justify-center'>
           <Spinner size='lg' />

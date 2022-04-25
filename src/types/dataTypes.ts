@@ -51,3 +51,15 @@ export interface Author {
   updatedAt: string;
   __v: number;
 }
+
+export interface Event {
+  _id: string;
+  title: string;
+  description: string;
+  img: string;
+  starts_at: string;
+  author: string;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+}
