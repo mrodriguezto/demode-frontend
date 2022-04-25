@@ -3,15 +3,10 @@ Este componente irá en el /about será la tarjeta de la
 info de cada persona con 
 */
 
-/*
-TODO:
-- Centrar verticalmente el nombre del miembro de la banda
-al hacer hover sobre la imagen
-*/
 
 const positions = {
-    right: "flex-row",
-    left: "flex-row-reverse space-x-reverse"
+    right: "lg:flex-row",
+    left: "lg:flex-row-reverse"
 }
 
 const colors = {
@@ -40,15 +35,12 @@ const SmallMemberInfo = ({
 }:Props) => {
 
     return(
-    <div className={" m-10 flex "+positions[position]+" flex-nowrap space-x-4 "}>
-        <div className="w-2/3 bg-black rounded-2xl relative">
-            <span className=
-            "absolute w-full h-full text-2xl text-white bg-black select-none text-center opacity-0 hover:opacity-50"
-            >{name}</span>
-            <img src={photoSrc} alt={name} className=" aspect-square rounded-2xl hover:opacity-50" />
+    <div className={"mx-20 my-10 grid justify-items-center lg:flex "+positions[position]+" lg:flex-nowrap "+colors[color]}>
+        <div className="w-1/4 lg:w-1/5 bg-black relative grid lg:content-center ">
+            <img src={photoSrc} alt={name} className=" aspect-square" />
         </div>
-
-        <div className={colors[color] + " m-10 p-6"}>
+        <div className={"w-full lg:w-4/5 m-2 p-6 text-white grid content-center"}>
+            <h3 className="text-2xl mb-6">{name}</h3>
             {children}
         </div>
     </div>
