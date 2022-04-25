@@ -20,9 +20,14 @@ const useNews = () => {
     }
   };
 
+  const addNews = (data: Post) => {
+    setNews((values) => [...values, data]);
+  };
+
   return {
     news,
     isLoading,
+    addNews,
   };
 };
 

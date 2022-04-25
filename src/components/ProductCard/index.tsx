@@ -30,7 +30,7 @@ const ProductCard = ({
 
   const handleDelete = async () => {
     try {
-      const res = await demodeApi.delete(`/products/${id}/delete`);
+      await demodeApi.delete(`/products/${id}/delete`);
       window.location.reload();
     } catch (error) {
       toast.error("No se logró eliminar el item");

@@ -1,5 +1,4 @@
 import Modal from "./index";
-import useUploadFile from "../../hooks/useUploadFile";
 import { useState } from "react";
 import { useFormik } from "formik";
 import demodeApi from "../../api/axios";
@@ -13,9 +12,7 @@ type Props = {
   id: string;
   initialValues: {
     title: string;
-    description: string;
-    categories: string;
-    url: string;
+    content: string;
   };
 };
 
@@ -30,11 +27,9 @@ const EditProductModal = ({ callback, id, initialValues }: Props) => {
   const updateProduct = () => {
     setIsSending(true);
     demodeApi
-      .put(`/products/${id}/edit`, {
+      .put(`/posts/${id}/edit`, {
         title: values.title,
-        description: values.description,
-        categories: values.categories,
-        url: values.url,
+        content: values.content,
       })
       .then((res) => {
         window.location.reload();
@@ -46,7 +41,7 @@ const EditProductModal = ({ callback, id, initialValues }: Props) => {
   };
 
   return (
-    <Modal modalId={`editProductModal${id}`}>
+    <Modal modalId={`editNewsModal${id}`}>
       <h6 className='font-semibold text-xl'>NUEVO ARTÍCULO</h6>
       <br />
       <form onSubmit={handleSubmit} noValidate>
@@ -60,26 +55,10 @@ const EditProductModal = ({ callback, id, initialValues }: Props) => {
         />
         <TextArea
           onChange={handleChange}
-          label='Descripción'
-          name='description'
-          value={values.description}
-          placeholder='Ingrese la descripción...'
-          required
-        />
-        <TextField
-          onChange={handleChange}
-          label='Categoría'
-          name='categories'
-          value={values.categories}
-          placeholder='Ingrese la categoría...'
-          required
-        />
-        <TextField
-          onChange={handleChange}
-          label='Enlace'
-          name='url'
-          value={values.url}
-          placeholder='Ingrese el enlace...'
+          label='Contenido'
+          name='content'
+          value={values.content}
+          placeholder='Ingrese el contenido...'
           required
         />
         <div className='w-full flex justify-left'>

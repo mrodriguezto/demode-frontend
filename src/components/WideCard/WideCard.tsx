@@ -12,7 +12,7 @@ const WideCard = ({ imgSrc, children }: Props) => {
         <div className='w-full h-full'>
           <img
             className='h-full max-h-44 sm:max-h-fit w-full object-cover min-h-[80px]'
-            src='https://via.placeholder.com/468x40?text=Placeholder'
+            src={imgSrc}
             alt='Demodé logo'
           />
         </div>
