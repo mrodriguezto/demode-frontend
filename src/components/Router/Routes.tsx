@@ -1,7 +1,7 @@
 import { Navigate, Route, Routes as DOMRoutes } from "react-router-dom";
 
 import LandingPage from "../../pages/LandingPage";
-import News from "../../pages/News";
+import NewsPage from "../../pages/NewsPage";
 import Concerts from "../../pages/Concerts";
 
 import About from "../../pages/About";
@@ -16,7 +16,7 @@ const Routes = () => {
   return (
     <DOMRoutes>
       <Route path='/' element={<LandingPage />} />
-      <Route path='/news' element={<News />} />
+      <Route path='/news' element={<NewsPage />} />
       <Route path='/concerts' element={<Concerts />} />
 
       <Route path='/about' element={<About />} />
