@@ -12,6 +12,10 @@ import Products from "../../pages/Products";
 import LoginPage from "../../pages/LoginPage";
 import PublicRoutes from "./PublicRoutes";
 
+//////////////Modals
+import Modals from "../../pages/Modals(pruebas)";
+
+
 const Routes = () => {
   return (
     <DOMRoutes>
@@ -33,6 +37,14 @@ const Routes = () => {
 
       {/* Fallback */}
       <Route path='*' element={<Navigate to='/' />} />
+      <Route path='/dmd-login' element={<LoginPage />} />
+
+
+
+      <Route path='/modals' element={<Modals />} />
+
+
+
     </DOMRoutes>
   );
 };
