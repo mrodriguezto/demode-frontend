@@ -2,6 +2,10 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        title: ['"Comic Sans"', "Verdana", "sans-serif"],
+        body: ['"Comic Sans"', "Verdana", "sans-serif"],
+      },
       colors: {
         primary: "#F61313",
         secondary: "#BB0707",
