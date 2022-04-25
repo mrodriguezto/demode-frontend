@@ -1,12 +1,10 @@
 import SquareImg from "../assets/square-photo.jpg";
 
-//import DiegoImg from "../assets/member-diego.jpeg";
+import DiegoImg from "../assets/member-diego.jpeg";
 import DavidImg from "../assets/member-david.png";
 import JulioImg from "../assets/member-julio.jpeg";
 import DanImg from "../assets/member-daniel.jpg";
 import YairImg from "../assets/member-yair.jpeg";
-
-import HeroImg from "../assets/hero-img.jpg";
 
 import PageTitle from "../components/PageTitle";
 import SmallMemberInfo from "../components/SmallMemberInfo";
@@ -79,7 +77,7 @@ const About = () => {
 
       <SmallMemberInfo
         name='Diego'
-        photoSrc={HeroImg}
+        photoSrc={DiegoImg}
         position='left'
         color='primary'
       >
