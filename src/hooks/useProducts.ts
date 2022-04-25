@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import demodeApi from "../api/axios";
-import { Post } from "../types/dataTypes";
-const useNews = () => {
-  const [news, setNews] = useState<Post[]>([]);
+import { Product } from "../types/dataTypes";
+
+const useProducts = () => {
+  const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -12,18 +13,18 @@ const useNews = () => {
 
   const loadNews = async () => {
     try {
-      const res = await demodeApi.get<Post[]>("/posts");
+      const res = await demodeApi.get<Product[]>("/products");
       setIsLoading(false);
-      setNews(res.data);
+      setProducts(res.data);
     } catch (error) {
       toast.error("No se lograron obtener los datos");
     }
   };
 
   return {
-    news,
+    products,
     isLoading,
   };
 };
 
-export default useNews;
+export default useProducts;

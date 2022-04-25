@@ -37,7 +37,7 @@ const Button = ({
     buttonSize[size] + " " + buttonColor[color] + " " + className;
   return (
     <button
-      className={`${classNames} font-semibold rounded-sm transition ease-linear duration-150`}
+      className={`${classNames} font-medium font-title rounded-sm transition ease-linear duration-150`}
       onClick={onClick}
       type={type}
     >
