@@ -14,7 +14,7 @@ import { AuthContext } from "../../context/AuthContext";
 
 const sidebarLinks = [
   { path: "/news", title: "NOTICIAS" },
-  { path: "/concerts", title: "CONCIERTOS" },
+  { path: "/events", title: "EVENTOS" },
   { path: "/products", title: "PRODUCTOS" },
   { path: "/about", title: "CONÓCENOS" },
   { path: "/contact", title: "CONTÁCTANOS" },

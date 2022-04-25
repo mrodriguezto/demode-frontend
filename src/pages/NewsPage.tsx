@@ -1,32 +1,13 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import WideCard from "../components/WideCard/WideCard";
-import demodeApi from "../api/axios";
-import { Post } from "../types/dataTypes";
-import toast from "react-hot-toast";
 import Spinner from "../components/Spinner";
 import dayjs from "dayjs";
 import "dayjs/locale/es";
 import PageTitle from "../components/PageTitle";
+import useNews from "../hooks/useNews";
 
 const NewsPage = () => {
-  const [news, setNews] = useState<Post[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  dayjs.locale("es");
-
-  useEffect(() => {
-    loadNews();
-  }, []);
-
-  const loadNews = async () => {
-    try {
-      const res = await demodeApi.get<Post[]>("/posts");
-      setIsLoading(false);
-      setNews(res.data);
-    } catch (error) {
-      toast.error("No se lograron obtener los datos");
-    }
-  };
+  const { isLoading, news } = useNews();
 
   return (
     <div className='text-white pt-[112px] min-h-full'>
