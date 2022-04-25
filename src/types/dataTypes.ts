@@ -76,3 +76,12 @@ export interface Product {
   updatedAt: string;
   __v: number;
 }
+
+export interface ContactResponse {
+  name: string;
+  email: string;
+  message: string;
+  _id: string;
+  sended_at: string;
+  __v: number;
+}

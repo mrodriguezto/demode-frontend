@@ -14,7 +14,8 @@ function App() {
       <Footer />
       <Toaster
         toastOptions={{
-          className: "bg-lightGray text-white rounded-sm",
+          className: "bg-lightGray text-white rounded-sm font-title",
+          duration: 4000,
         }}
         position='bottom-center'
       />

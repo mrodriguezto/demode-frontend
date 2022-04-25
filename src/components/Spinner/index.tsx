@@ -8,6 +8,7 @@ const spinnerColor = {
   darkGray: "fill-darkGray text-gray-500",
   black: "fill-black text-gray-500",
   alterGray: "fill-alterGray text-gray-500",
+  lightGray: "fill-lightGray text-gray-100",
 };
 
 const spinnerSize = {
@@ -19,15 +20,17 @@ const spinnerSize = {
 type Props = {
   color?: ThemeColors;
   size?: Sizes;
+  className?: string;
 };
 
-const Spinner = ({ color = "primary", size = "md" }: Props) => {
-  const classNames = spinnerSize[size] + " " + spinnerColor[color] + " ";
+const Spinner = ({ color = "primary", size = "md", className = "" }: Props) => {
+  const classNames =
+    spinnerSize[size] + " " + spinnerColor[color] + " " + className;
   return (
     <div>
       <svg
         role='status'
-        className={`${classNames}   animate-spin`}
+        className={`${classNames} animate-spin`}
         viewBox='0 0 100 101'
         fill='none'
         xmlns='http://www.w3.org/2000/svg'

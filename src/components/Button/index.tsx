@@ -14,6 +14,7 @@ const buttonColor = {
   darkGray: "bg-darkGray hover:bg-gray-800",
   black: "bg-black hover:bg-gray-900",
   alterGray: "bg-alterGray hover:bg-gray-900",
+  lightGray: "bg-lightGray hover:bg-gray-900",
 };
 
 type Props = {
@@ -23,6 +24,7 @@ type Props = {
   className?: string;
   onClick?: () => void;
   type?: "button" | "submit" | "reset";
+  disabled?: boolean;
 };
 
 const Button = ({
@@ -32,14 +34,16 @@ const Button = ({
   className = "",
   onClick = () => {},
   type = "button",
+  disabled = false,
 }: Props) => {
   const classNames =
     buttonSize[size] + " " + buttonColor[color] + " " + className;
   return (
     <button
-      className={`${classNames} font-medium font-title rounded-sm transition ease-linear duration-150`}
+      className={`${classNames} font-medium font-title rounded-sm transition ease-linear duration-150 disabled:bg-dark disabled:text-gray-600 shadow-md`}
       onClick={onClick}
       type={type}
+      disabled={disabled}
     >
       {children}
     </button>

@@ -5,6 +5,7 @@ export type ThemeColors =
   | "dark"
   | "darkGray"
   | "black"
-  | "alterGray";
+  | "alterGray"
+  | "lightGray";
 
 export type Sizes = "sm" | "md" | "lg";

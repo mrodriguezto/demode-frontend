@@ -10,7 +10,7 @@ type Props = {
   disabled?: boolean;
 };
 
-const TextFieldBig = ({
+const TextArea = ({
   label,
   name,
   value,
@@ -39,4 +39,4 @@ const TextFieldBig = ({
   );
 };
 
-export default TextFieldBig;
+export default TextArea;

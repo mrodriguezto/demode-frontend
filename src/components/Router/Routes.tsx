@@ -4,9 +4,7 @@ import LandingPage from "../../pages/LandingPage";
 import NewsPage from "../../pages/NewsPage";
 import EventsPage from "../../pages/EventsPage";
 import AboutPage from "../../pages/AboutPage";
-import Photos from "../../pages/Photos";
-import Videos from "../../pages/Videos";
-import Contact from "../../pages/Contact";
+import ContactPage from "../../pages/ContactPage";
 import ProductsPage from "../../pages/ProductsPage";
 import LoginPage from "../../pages/LoginPage";
 import PublicRoutes from "./PublicRoutes";
@@ -23,10 +21,8 @@ const Routes = () => {
 
       <Route path='/about' element={<AboutPage />} />
 
-      <Route path='/photos' element={<Photos />} />
-      <Route path='/videos' element={<Videos />} />
       <Route path='/products' element={<ProductsPage />} />
-      <Route path='/contact' element={<Contact />} />
+      <Route path='/contact' element={<ContactPage />} />
 
       {/* Not logged in Route */}
       <Route element={<PublicRoutes />}>
