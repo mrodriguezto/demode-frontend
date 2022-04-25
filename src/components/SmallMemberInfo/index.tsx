@@ -36,7 +36,7 @@ const SmallMemberInfo = ({
 
     return(
     <div className={"mx-20 my-10 grid justify-items-center lg:flex "+positions[position]+" lg:flex-nowrap "+colors[color]}>
-        <div className="w-1/4 lg:w-1/5 bg-black relative grid lg:content-center ">
+        <div className="w-1/3 lg:w-1/5 bg-black relative grid lg:content-center ">
             <img src={photoSrc} alt={name} className=" aspect-square" />
         </div>
         <div className={"w-full lg:w-4/5 m-2 p-6 text-white grid content-center"}>
