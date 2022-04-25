@@ -76,7 +76,7 @@ const LandingPage = () => {
                 />
               ))}
             </div>
-            <Link to='/events'>
+            <Link to='/news'>
               <Button>Ver más</Button>
             </Link>
           </section>
@@ -96,7 +96,7 @@ const LandingPage = () => {
                 />
               ))}
             </div>
-            <Link to='/events'>
+            <Link to='/products'>
               <Button>Ver más</Button>
             </Link>
           </section>
