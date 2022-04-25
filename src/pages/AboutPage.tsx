@@ -1,11 +1,10 @@
 import SquareImg from "../assets/square-photo.jpg";
 
+import DiegoImg from "../assets/member-diego.jpeg";
 import DavidImg from "../assets/member-david.png";
 import JulioImg from "../assets/member-julio.jpeg";
 import DanImg from "../assets/member-daniel.jpg";
 import YairImg from "../assets/member-yair.jpeg";
-
-import HeroImg from "../assets/hero-img.jpg";
 
 import PageTitle from "../components/PageTitle";
 import SmallMemberInfo from "../components/SmallMemberInfo";
@@ -78,20 +77,26 @@ const About = () => {
 
       <SmallMemberInfo
         name='Diego'
-        photoSrc={HeroImg}
+        photoSrc={DiegoImg}
         position='left'
         color='primary'
       >
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum tempora
-        delectus tempore esse, debitis animi enim magni recusandae, modi
-        repudiandae iste aliquid quisquam veritatis corporis distinctio.
-        Pariatur, veritatis. Ducimus ut veritatis dolores ad assumenda vel
-        corporis consectetur, adipisci, optio ratione dignissimos eligendi
-        obcaecati saepe exercitationem dolorem deleniti, quisquam eum iure
-        quibusdam neque cumque magni placeat unde nihil. Ratione sed, ipsam
-        voluptate molestiae sit quis magnam voluptates maiores mollitia placeat
-        consectetur? Sapiente nesciunt iure officia porro aut, doloremque
-        aliquam magni deserunt beatae velit cupiditate corporis tempore,
+        Diego Castañeda Calderón tío de David Chávez, comenzó en la música 
+        desde muy pequeño con la zampoña, flauta dulce y por etapas tocó 
+        la tarola en la banda colegial, aún cursando la secundaria se animó 
+        por la guitarra acústica criolla llevándolo a estudiar un curso 
+        formativo en el MALI, a mediados del 2011 tomó más interés en la 
+        batería acústica al visitar varias salas de estudio junto a sus 
+        amigos de barrio, es cuando decide trabajar para comprar su primera 
+        batería acústica en el 2012, con el tiempo optó por desenvolverse en 
+        la percusión por completo, con el paso de los años, cursó distintas 
+        clases particulares de batería, tuvo distintas presentaciones en bares, 
+        pubs y lugares públicos con distintas bandas indie y rock alternativo,
+         pero, no llegaba a tomarlo en serio del todo.
+        <br />
+        Ya habiendo dejado de lado la música por un periodo de casi 2 años; el 
+        2020 David Chávez le propone hacer un tributo a Queen, al día de hoy 
+        ya siendo egresado en Derecho, es miembro de Demodé como baterista.
       </SmallMemberInfo>
 
       <SmallMemberInfo
