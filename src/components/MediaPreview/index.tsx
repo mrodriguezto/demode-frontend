@@ -1,5 +1,5 @@
 import DavidImg from "../../assets/member-david.png";
-import DanielImg from "../../assets/member-daniel.jpg";
+import DanielImg from "../../assets/member-dan.jpg";
 import JulioImg from "../../assets/member-julio.jpeg";
 import YairImg from "../../assets/member-yair.jpeg";
 

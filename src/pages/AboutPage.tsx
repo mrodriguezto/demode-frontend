@@ -3,7 +3,7 @@ import SquareImg from "../assets/square-photo.jpg";
 import DiegoImg from "../assets/member-diego.jpeg";
 import DavidImg from "../assets/member-david.png";
 import JulioImg from "../assets/member-julio.jpeg";
-import DanImg from "../assets/member-daniel.jpg";
+import DanImg from "../assets/member-dan.jpg";
 import YairImg from "../assets/member-yair.jpeg";
 
 import PageTitle from "../components/PageTitle";
@@ -81,22 +81,22 @@ const About = () => {
         position='left'
         color='primary'
       >
-        Diego Castañeda Calderón tío de David Chávez, comenzó en la música 
-        desde muy pequeño con la zampoña, flauta dulce y por etapas tocó 
-        la tarola en la banda colegial, aún cursando la secundaria se animó 
-        por la guitarra acústica criolla llevándolo a estudiar un curso 
-        formativo en el MALI, a mediados del 2011 tomó más interés en la 
-        batería acústica al visitar varias salas de estudio junto a sus 
-        amigos de barrio, es cuando decide trabajar para comprar su primera 
-        batería acústica en el 2012, con el tiempo optó por desenvolverse en 
-        la percusión por completo, con el paso de los años, cursó distintas 
-        clases particulares de batería, tuvo distintas presentaciones en bares, 
-        pubs y lugares públicos con distintas bandas indie y rock alternativo,
-         pero, no llegaba a tomarlo en serio del todo.
+        Diego Castañeda Calderón tío de David Chávez, comenzó en la música desde
+        muy pequeño con la zampoña, flauta dulce y por etapas tocó la tarola en
+        la banda colegial, aún cursando la secundaria se animó por la guitarra
+        acústica criolla llevándolo a estudiar un curso formativo en el MALI, a
+        mediados del 2011 tomó más interés en la batería acústica al visitar
+        varias salas de estudio junto a sus amigos de barrio, es cuando decide
+        trabajar para comprar su primera batería acústica en el 2012, con el
+        tiempo optó por desenvolverse en la percusión por completo, con el paso
+        de los años, cursó distintas clases particulares de batería, tuvo
+        distintas presentaciones en bares, pubs y lugares públicos con distintas
+        bandas indie y rock alternativo, pero, no llegaba a tomarlo en serio del
+        todo.
         <br />
-        Ya habiendo dejado de lado la música por un periodo de casi 2 años; el 
-        2020 David Chávez le propone hacer un tributo a Queen, al día de hoy 
-        ya siendo egresado en Derecho, es miembro de Demodé como baterista.
+        Ya habiendo dejado de lado la música por un periodo de casi 2 años; el
+        2020 David Chávez le propone hacer un tributo a Queen, al día de hoy ya
+        siendo egresado en Derecho, es miembro de Demodé como baterista.
       </SmallMemberInfo>
 
       <SmallMemberInfo
@@ -105,18 +105,19 @@ const About = () => {
         position='right'
         color='primary'
       >
-      David Chavez Palacios empezó desde muy pequeño en el arte del canto. Pasó 
-      por el museo de Arte cuando tenía 7 años. En 2009, a la edad de 8 años, 
-      participó en un concurso de canto en el Satchmo. En 2010, ingresó a una Escuela 
-      de Talentos, donde fue becado, participando como miembro del coro, ahí mismo es 
-      como pasaría el mayor tiempo de su infancia y adolescencia presentándose tanto 
-      en shows como en televisión, de esta manera  se desarrolló como artista. 
-      <br />
-      En 2016, participó en La Voz Kids, donde quedó como semifinalista del programa. 
-      En 2020, le surge la idea de formar un proyecto de tributo a la banda Queen, 
-      contactándose con algunos músicos; sin embargo, al final descubrió que la 
-      versatilidad de la banda podía ser mejor aprovechada mediante composiciones 
-      y covers.
+        David Chavez Palacios empezó desde muy pequeño en el arte del canto.
+        Pasó por el museo de Arte cuando tenía 7 años. En 2009, a la edad de 8
+        años, participó en un concurso de canto en el Satchmo. En 2010, ingresó
+        a una Escuela de Talentos, donde fue becado, participando como miembro
+        del coro, ahí mismo es como pasaría el mayor tiempo de su infancia y
+        adolescencia presentándose tanto en shows como en televisión, de esta
+        manera se desarrolló como artista.
+        <br />
+        En 2016, participó en La Voz Kids, donde quedó como semifinalista del
+        programa. En 2020, le surge la idea de formar un proyecto de tributo a
+        la banda Queen, contactándose con algunos músicos; sin embargo, al final
+        descubrió que la versatilidad de la banda podía ser mejor aprovechada
+        mediante composiciones y covers.
       </SmallMemberInfo>
 
       <SmallMemberInfo
