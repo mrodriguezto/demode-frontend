@@ -13,7 +13,7 @@ type ProductCardProps = {
   img: string;
   url: string;
   categories: string;
-  admin: boolean;
+  admin?: boolean;
 };
 
 const ProductCard = ({

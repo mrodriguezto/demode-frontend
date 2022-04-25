@@ -87,6 +87,7 @@ const LandingPage = () => {
             <div className='min-h-full grid md:grid-cols-2 gap-x-8 gap-y-4 container lg:max-w-5xl mx-auto px-0 sm:px-8 py-10'>
               {previewData?.products.map((item) => (
                 <ProductCard
+                  id={item._id}
                   url={item.url}
                   title={item.title}
                   categories={item.categories}
