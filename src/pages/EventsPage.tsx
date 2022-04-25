@@ -26,7 +26,7 @@ const EventsPage = () => {
           {status === "authenticated" && (
             <div className='flex justify-end mb-8'>
               <Button dataToggle='modal' dataTarget='#newEventModal'>
-                Añadir nuevo producto
+                Añadir nuevo evento
               </Button>
             </div>
           )}
