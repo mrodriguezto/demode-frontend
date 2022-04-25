@@ -14,7 +14,7 @@ const About = () => {
     <div className='pt-36'>
       <PageTitle title='Sobre Nosotros' />
       <div className='flex lg:flex-row flex-col container max-w-5xl mx-auto'>
-        <div className='text-white xl:w-full grid content-center mx-5'>
+        <div className='text-white lg:w-full grid content-center mx-5'>
           <div className='m-4'>
             {" "}
             {/*Historia*/}
@@ -64,11 +64,11 @@ const About = () => {
             </div>
           </div>
         </div>
-        <div className='lg:w-full lg:mx-auto grid content-center'>
+        <div className='lg:w-5/6 lg:mx-auto lg:p-5 grid content-center'>
           <img
             src={SquareImg}
             alt='Historia'
-            className='w-2/3 mx-auto mt-10 xl:mt-0'
+            className='w-2/3 lg:w-full mx-auto mt-10 lg:mt-0'
           />
         </div>
       </div>
@@ -105,16 +105,18 @@ const About = () => {
         position='right'
         color='primary'
       >
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum tempora
-        delectus tempore esse, debitis animi enim magni recusandae, modi
-        repudiandae iste aliquid quisquam veritatis corporis distinctio.
-        Pariatur, veritatis. Ducimus ut veritatis dolores ad assumenda vel
-        corporis consectetur, adipisci, optio ratione dignissimos eligendi
-        obcaecati saepe exercitationem dolorem deleniti, quisquam eum iure
-        quibusdam neque cumque magni placeat unde nihil. Ratione sed, ipsam
-        voluptate molestiae sit quis magnam voluptates maiores mollitia placeat
-        consectetur? Sapiente nesciunt iure officia porro aut, doloremque
-        aliquam magni deserunt beatae velit cupiditate corporis tempore,
+      David Chavez Palacios empezó desde muy pequeño en el arte del canto. Pasó 
+      por el museo de Arte cuando tenía 7 años. En 2009, a la edad de 8 años, 
+      participó en un concurso de canto en el Satchmo. En 2010, ingresó a una Escuela 
+      de Talentos, donde fue becado, participando como miembro del coro, ahí mismo es 
+      como pasaría el mayor tiempo de su infancia y adolescencia presentándose tanto 
+      en shows como en televisión, de esta manera  se desarrolló como artista. 
+      <br />
+      En 2016, participó en La Voz Kids, donde quedó como semifinalista del programa. 
+      En 2020, le surge la idea de formar un proyecto de tributo a la banda Queen, 
+      contactándose con algunos músicos; sin embargo, al final descubrió que la 
+      versatilidad de la banda podía ser mejor aprovechada mediante composiciones 
+      y covers.
       </SmallMemberInfo>
 
       <SmallMemberInfo
