@@ -11,6 +11,10 @@ import Contact from "../../pages/Contact";
 import Products from "../../pages/Products";
 import LoginPage from "../../pages/LoginPage";
 
+//////////////Borrar
+import Modals from "../../pages/Modals(pruebas)";
+
+
 const Routes = () => {
   return (
     <DOMRoutes>
@@ -25,6 +29,9 @@ const Routes = () => {
       <Route path='/products' element={<Products />} />
       <Route path='/contact' element={<Contact />} />
       <Route path='/dmd-login' element={<LoginPage />} />
+
+      <Route path='/modals' element={<Modals />} />
+
     </DOMRoutes>
   );
 };
