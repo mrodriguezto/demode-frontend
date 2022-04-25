@@ -102,9 +102,6 @@ const LandingPage = () => {
               <Button>Ver más</Button>
             </Link>
           </section>
-          <Link to='/dmd-login'>
-              <Button color='black' className='text-black'>Login</Button>
-          </Link>
         </>
       )}
     </main>
