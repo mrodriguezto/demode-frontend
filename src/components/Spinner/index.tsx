@@ -12,6 +12,7 @@ const spinnerColor = {
 };
 
 const spinnerSize = {
+  inline: "w-4 h-4 inline",
   sm: "w-8 h-8",
   md: "w-12 h-12",
   lg: "w-16 h-16",
@@ -19,7 +20,7 @@ const spinnerSize = {
 
 type Props = {
   color?: ThemeColors;
-  size?: Sizes;
+  size?: Sizes | "inline";
   className?: string;
 };
 

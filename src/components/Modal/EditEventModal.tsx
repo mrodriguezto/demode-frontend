@@ -9,59 +9,47 @@ import TextArea from "../TextArea";
 import Button from "../Button";
 import Spinner from "../Spinner";
 
-const initialValues = {
-  title: "",
-  description: "",
-  categories: "",
-  url: "",
-};
-
 type Props = {
   callback: (data: any) => void;
+  id: string;
+  initialValues: {
+    title: string;
+    description: string;
+    place: string;
+    starts_at: string;
+    url: string;
+  };
 };
 
-const NewProductModal = ({ callback }: Props) => {
-  const { uploadFile } = useUploadFile("products");
+const EditEventModal = ({ callback, id, initialValues }: Props) => {
   const [isSending, setIsSending] = useState(false);
-  const [img, setImg] = useState<File>();
 
   const { values, handleChange, handleSubmit, setValues } = useFormik({
     initialValues,
-    onSubmit: () => uploadFiles(),
+    onSubmit: () => updateProduct(),
   });
 
-  const uploadFiles = async () => {
+  const updateProduct = () => {
     setIsSending(true);
-    uploadFile(img, registerProduct);
-  };
-
-  const registerProduct = (url: string) => {
     demodeApi
-      .post("/products/new", {
+      .put(`/events/${id}/edit`, {
         title: values.title,
         description: values.description,
-        categories: values.categories,
+        place: values.place,
+        starts_at: values.starts_at,
         url: values.url,
-        img: url,
       })
       .then((res) => {
-        toast.success("Producto registrado");
+        window.location.reload();
 
         setValues(initialValues);
-        setImg(undefined);
         setIsSending(false);
         callback(res.data);
       });
   };
 
-  const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const files = event.target.files;
-    if (!files || !files[0]) return;
-    setImg(files[0]);
-  };
-
   return (
-    <Modal modalId='newProductModal'>
+    <Modal modalId={`editEventModal${id}`}>
       <h6 className='font-semibold text-xl'>NUEVO ARTÍCULO</h6>
       <br />
       <form onSubmit={handleSubmit} noValidate>
@@ -83,12 +71,22 @@ const NewProductModal = ({ callback }: Props) => {
         />
         <TextField
           onChange={handleChange}
-          label='Categoría'
-          name='categories'
-          value={values.categories}
-          placeholder='Ingrese la categoría...'
+          label='Lugar'
+          name='place'
+          value={values.place}
+          placeholder='Ingrese el lugar...'
           required
         />
+        <TextField
+          onChange={handleChange}
+          label='Fecha y hora'
+          name='starts_at'
+          value={values.starts_at}
+          type='datetime-local'
+          placeholder='Ingrese la fecha...'
+          required
+        />
+
         <TextField
           onChange={handleChange}
           label='Enlace'
@@ -97,21 +95,6 @@ const NewProductModal = ({ callback }: Props) => {
           placeholder='Ingrese el enlace...'
           required
         />
-        <div className='w-full flex'>
-          <label className='block'>
-            <span className='sr-only'>Elegir una foto</span>
-            <input
-              onChange={handleImageChange}
-              type='file'
-              className='block w-full text-sm text-slate-500
-                    file:mr-4 file:py-2 file:px-4
-                    file:rounded-sm file:border-0
-                    file:text-sm file:font-semibold
-                    file:bg-alterGray file:text-white
-                    hover:file:bg-darkGray '
-            />
-          </label>
-        </div>
         <div className='w-full flex justify-left'>
           <Button
             className='px-9 mt-3 shadow-md relative'
@@ -123,10 +106,10 @@ const NewProductModal = ({ callback }: Props) => {
               <div className='w-full h-full flex gap-x-2'>
                 <Spinner size='inline' color='lightGray' />
 
-                <p>Enviando...</p>
+                <p>Actualizando...</p>
               </div>
             ) : (
-              "Enviar"
+              "Actualizar"
             )}
           </Button>
         </div>
@@ -135,4 +118,4 @@ const NewProductModal = ({ callback }: Props) => {
   );
 };
 
-export default NewProductModal;
+export default EditEventModal;

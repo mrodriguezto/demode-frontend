@@ -21,9 +21,14 @@ const useEvents = () => {
     }
   };
 
+  const addEvent = (data: Event) => {
+    setEvents((values) => [...values, data]);
+  };
+
   return {
     events,
     isLoading,
+    addEvent,
   };
 };
 

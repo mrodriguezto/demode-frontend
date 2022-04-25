@@ -92,11 +92,8 @@ const EditProductModal = ({ callback, id, initialValues }: Props) => {
           >
             {isSending ? (
               <div className='w-full h-full flex gap-x-2'>
-                <Spinner
-                  color='lightGray'
-                  size='sm'
-                  className='w-3 h-3 inline'
-                />
+                <Spinner size='inline' color='lightGray' />
+
                 <p>Actualizando...</p>
               </div>
             ) : (

@@ -7,7 +7,6 @@ import Spinner from "../components/Spinner";
 import { AuthContext } from "../context/AuthContext";
 import useProducts from "../hooks/useProducts";
 import NewProductModal from "../components/Modal/NewProductModal";
-import EditProductModal from "../components/Modal/EditProductModal";
 
 const ProductsPage = () => {
   const { isLoading, products, addProduct } = useProducts();

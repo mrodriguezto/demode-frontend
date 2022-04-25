@@ -26,7 +26,7 @@ const TextArea = ({
         {label}
       </label>
       <textarea
-        className='w-full h-36 whitespace-normal mt-2 bg-lightGray rounded-sm outline-none px-3 py-2 text-sm text-gray-300 placeholder:text-gray-400'
+        className='w-full h-28 whitespace-normal mt-2 bg-lightGray rounded-sm outline-none px-3 py-2 text-sm text-gray-300 placeholder:text-gray-400'
         name={name}
         value={value}
         onChange={onChange}
