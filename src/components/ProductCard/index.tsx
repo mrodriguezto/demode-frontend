@@ -5,6 +5,7 @@ import { useState } from "react";
 import CardMenu from "../CardMenu";
 import demodeApi from "../../api/axios";
 import toast from "react-hot-toast";
+import EditProductModal from "../Modal/EditProductModal";
 
 type ProductCardProps = {
   id: string;
@@ -36,8 +37,6 @@ const ProductCard = ({
     }
   };
 
-  const handleEdit = () => {};
-
   return (
     <Card className='flex flex-col min-h-[320px]' fullsize noPadding>
       <div className='relative'>
@@ -53,7 +52,11 @@ const ProductCard = ({
               <RiMore2Fill className='w-6 h-6' />
             </Button>
             {menuIsActive && (
-              <CardMenu onDelete={handleDelete} onEdit={() => {}}></CardMenu>
+              <CardMenu
+                onDelete={handleDelete}
+                dataTarget={`#editProductModal${id}`}
+                dataToggle='modal'
+              />
             )}
           </>
         )}
@@ -74,6 +77,16 @@ const ProductCard = ({
           </Button>
         </a>
       </div>
+      <EditProductModal
+        id={id}
+        callback={() => {}}
+        initialValues={{
+          categories,
+          description,
+          title,
+          url,
+        }}
+      />
     </Card>
   );
 };

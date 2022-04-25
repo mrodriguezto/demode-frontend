@@ -94,7 +94,7 @@ const Contact = () => {
                     <Spinner
                       color='lightGray'
                       size='sm'
-                      className='w-4 h-4 inline'
+                      className='w-3 h-3 inline'
                     />
                     <p>Enviando...</p>
                   </div>
