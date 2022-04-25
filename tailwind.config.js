@@ -3,8 +3,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        title: ['"Comic Sans"', "Verdana", "sans-serif"],
-        body: ['"Comic Sans"', "Verdana", "sans-serif"],
+        title: ["Montserrat", "Verdana", "sans-serif"],
+        body: ['"Open Sans"', "Verdana", "sans-serif"],
       },
       colors: {
         primary: "#F61313",

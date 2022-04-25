@@ -1,3 +1,5 @@
+import { Sizes, ThemeColors } from "../../types/styleTypes";
+
 const buttonSize = {
   sm: "py-2 px-4 text-sm",
   md: "py-3 px-6",
@@ -15,15 +17,8 @@ const buttonColor = {
 };
 
 type Props = {
-  color?:
-    | "transparent"
-    | "primary"
-    | "secondary"
-    | "dark"
-    | "darkGray"
-    | "black"
-    | "alterGray";
-  size?: "sm" | "md" | "lg";
+  color?: ThemeColors;
+  size?: Sizes;
   children: React.ReactNode;
   className?: string;
   onClick?: () => void;
