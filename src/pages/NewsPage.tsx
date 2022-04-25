@@ -6,15 +6,18 @@ import "dayjs/locale/es";
 import PageTitle from "../components/PageTitle";
 import useNews from "../hooks/useNews";
 import NewsCard from "../components/NewsCard";
+import { AuthContext } from "../context/AuthContext";
+import { useContext } from "react";
 
 const NewsPage = () => {
   const { isLoading, news } = useNews();
+  const { status } = useContext(AuthContext);
 
   return (
     <div className='text-white pt-36 min-h-full'>
       <PageTitle title='Noticias' />
 
-      {isLoading ? (
+      {isLoading || status === "checking" ? (
         <div className='w-full flex items-center justify-center'>
           <Spinner size='lg' />
         </div>

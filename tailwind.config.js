@@ -5,6 +5,7 @@ module.exports = {
       fontFamily: {
         title: ["Montserrat", "Verdana", "sans-serif"],
         body: ['"Open Sans"', "Verdana", "sans-serif"],
+        sans: ["Inter", "sans-serif"],
       },
       colors: {
         primary: "#F61313",

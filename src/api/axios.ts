@@ -5,7 +5,7 @@ const demodeApi = axios.create({
 });
 
 demodeApi.interceptors.request.use((config) => {
-  const token = localStorage.getItem("user-token");
+  const token = localStorage.getItem("admin-token");
   if (token) {
     config.headers = {
       ...config.headers,

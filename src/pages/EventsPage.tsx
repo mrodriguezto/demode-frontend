@@ -1,16 +1,19 @@
+import { useContext } from "react";
 import EventCard from "../components/EventCard";
 import PageTitle from "../components/PageTitle";
 import Spinner from "../components/Spinner";
+import { AuthContext } from "../context/AuthContext";
 
 import useEvents from "../hooks/useEvents";
 
 const EventsPage = () => {
   const { events, isLoading } = useEvents();
+  const { status } = useContext(AuthContext);
 
   return (
     <div className='pt-36'>
       <PageTitle title='Eventos' />
-      {isLoading ? (
+      {isLoading || status === "checking" ? (
         <div className='w-full flex items-center justify-center'>
           <Spinner size='lg' />
         </div>

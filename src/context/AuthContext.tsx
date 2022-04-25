@@ -37,7 +37,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const getUser = async (token: string) => {
     try {
-      const res = await demodeApi.get<User>("/auth/");
+      const res = await demodeApi.get<User>("/my-info");
       dispatch({ type: "signin", payload: { token, user: res.data } });
       console.log("Logged");
     } catch (error) {
