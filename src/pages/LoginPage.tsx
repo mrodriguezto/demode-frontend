@@ -7,6 +7,7 @@ import Card from "../components/Card";
 import TextField from "../components/TextField";
 import { AuthContext } from "../context/AuthContext";
 import { AxiosErrorResponse } from "../types/dataTypes";
+import PageTitle from "../components/PageTitle/index";
 
 const LoginPage = () => {
   const { signin } = useContext(AuthContext);
@@ -31,9 +32,9 @@ const LoginPage = () => {
   };
 
   return (
-    <div className='text-white pt-[112px] min-h-full'>
+    <div className='text-white pt-36 min-h-full'>
       {/* TODO: Use the PageTitle Component */}
-      <h1 className='my-6 text-center text-3xl'>Inicio de sesión</h1>
+      <PageTitle title='Inicio de sesión' />
       <div className='min-h-full w-full flex justify-center'>
         {/* TODO: Make a component out of this div */}
         <Card>

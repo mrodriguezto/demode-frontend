@@ -40,7 +40,7 @@ const Button = ({
     buttonSize[size] + " " + buttonColor[color] + " " + className;
   return (
     <button
-      className={`${classNames} font-medium font-title rounded-sm transition ease-linear duration-150 disabled:bg-dark disabled:text-gray-600 shadow-md`}
+      className={`${classNames} font-medium font-title rounded-sm transition ease-linear duration-150 disabled:bg-dark disabled:text-gray-600 shadow-md text-white`}
       onClick={onClick}
       type={type}
       disabled={disabled}
