@@ -2,7 +2,7 @@ import { Toaster } from "react-hot-toast";
 
 import { Footer } from "./layout/Footer";
 import { Header } from "./layout/Header";
-import Routes from "./components/Routes";
+import { Routes } from "./components/Routes";
 import AuthProvider from "./context/AuthContext";
 
 function App() {

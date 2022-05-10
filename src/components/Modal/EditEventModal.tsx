@@ -24,10 +24,10 @@ export const EditEventModal = ({ callback, id, initialValues }: Props) => {
 
   const { values, handleChange, handleSubmit, setValues } = useFormik({
     initialValues,
-    onSubmit: () => updateProduct(),
+    onSubmit: () => updateEvent(),
   });
 
-  const updateProduct = () => {
+  const updateEvent = () => {
     setIsSending(true);
     demodeApi
       .put(`/events/${id}/edit`, {

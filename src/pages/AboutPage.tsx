@@ -1,13 +1,12 @@
-import SquareImg from "../assets/square-photo.jpg";
+import { PageTitle } from "../components/Title";
+import { MemberCard } from "../components/Card";
 
+import SquareImg from "../assets/square-photo.jpg";
 import DiegoImg from "../assets/member-diego.jpeg";
 import DavidImg from "../assets/member-david.png";
 import JulioImg from "../assets/member-julio.jpeg";
 import DanImg from "../assets/member-dan.jpg";
 import YairImg from "../assets/member-yair.jpeg";
-
-import { PageTitle } from "../components/Title";
-import { SmallMemberInfo } from "../components/SmallMemberInfo";
 
 const About = () => {
   return (
@@ -75,12 +74,7 @@ const About = () => {
 
       <PageTitle title='Conócenos' className='mt-10' idName='miembros' />
 
-      <SmallMemberInfo
-        name='Diego'
-        photoSrc={DiegoImg}
-        position='left'
-        color='primary'
-      >
+      <MemberCard memberName='Diego' photoSrc={DiegoImg} position='left'>
         Diego Castañeda Calderón tío de David Chávez, comenzó en la música desde
         muy pequeño con la zampoña, flauta dulce y por etapas tocó la tarola en
         la banda colegial, aún cursando la secundaria se animó por la guitarra
@@ -97,14 +91,9 @@ const About = () => {
         Ya habiendo dejado de lado la música por un periodo de casi 2 años; el
         2020 David Chávez le propone hacer un tributo a Queen, al día de hoy ya
         siendo egresado en Derecho, es miembro de Demodé como baterista.
-      </SmallMemberInfo>
+      </MemberCard>
 
-      <SmallMemberInfo
-        name='David'
-        photoSrc={DavidImg}
-        position='right'
-        color='primary'
-      >
+      <MemberCard memberName='David' photoSrc={DavidImg} position='right'>
         David Chavez Palacios empezó desde muy pequeño en el arte del canto.
         Pasó por el museo de Arte cuando tenía 7 años. En 2009, a la edad de 8
         años, participó en un concurso de canto en el Satchmo. En 2010, ingresó
@@ -118,14 +107,9 @@ const About = () => {
         la banda Queen, contactándose con algunos músicos; sin embargo, al final
         descubrió que la versatilidad de la banda podía ser mejor aprovechada
         mediante composiciones y covers.
-      </SmallMemberInfo>
+      </MemberCard>
 
-      <SmallMemberInfo
-        name='Julio'
-        photoSrc={JulioImg}
-        position='left'
-        color='primary'
-      >
+      <MemberCard memberName='Julio' photoSrc={JulioImg} position='left'>
         En 2012, Julio Chauca conoció a Daniel Cifuentes en la escuela con quien
         estudiaría hasta el 2016. Pero ya había comenzado a tocar la guitarra
         hace un par de años atrás. En 2014, junto a su hermano y sus amigos,
@@ -139,14 +123,9 @@ const About = () => {
         <br />A finales del 2020, Daniel volvió a tener contacto con Julio ya
         que la banda estaba en busca de un segundo guitarrista, fue así que
         logró entrar y llegar a conectar bien con la banda.
-      </SmallMemberInfo>
+      </MemberCard>
 
-      <SmallMemberInfo
-        name='Dan'
-        photoSrc={DanImg}
-        position='right'
-        color='primary'
-      >
+      <MemberCard memberName='Dan' photoSrc={DanImg} position='right'>
         En 2012, Daniel Cifuentes Michuy conoció a Julio Chauca en la escuela
         con quien estudiaría hasta el 2016. Fue en ese año donde Daniel
         empezaría a tocar la guitarra junto a 3 amigas vocalistas formando una
@@ -164,14 +143,9 @@ const About = () => {
         intentar el tributo a Queen tras ver un anuncio en internet. Luego de
         postular mediante un video entraría a la banda y conocería a David
         Chavez.
-      </SmallMemberInfo>
+      </MemberCard>
 
-      <SmallMemberInfo
-        name='Yair'
-        photoSrc={YairImg}
-        position='left'
-        color='primary'
-      >
+      <MemberCard memberName='Yair' photoSrc={YairImg} position='left'>
         Yair Chunga empezó tocando el clarinete en el año 2017 por una
         recomendación de una amiga muy cercana con la que tocaba, luego lo fue
         dejando de lado el instrumento por no agarrarle el gusto.
@@ -181,7 +155,7 @@ const About = () => {
         instrumento. Formo una banda en la que no le fue muy bien, y
         concretamente en el año 2020 su amigo y vecino David Chávez, lo llamó
         para que sea parte de la banda Demodé hasta el día de hoy.
-      </SmallMemberInfo>
+      </MemberCard>
 
       <div className='pb-24'></div>
     </div>

@@ -4,3 +4,4 @@ export { WideCard } from "./WideCard";
 export { ProductCard } from "./ProductCard";
 export { PostCard } from "./PostCard";
 export { CardMenu } from "./CardMenu";
+export { MemberCard } from "./MemberCard";
