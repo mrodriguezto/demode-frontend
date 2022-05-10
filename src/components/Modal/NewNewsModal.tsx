@@ -2,12 +2,12 @@ import { useState } from "react";
 import { useFormik } from "formik";
 import toast from "react-hot-toast";
 
-import useUploadFile from "../../hooks/useUploadFile";
-import demodeApi from "../../api/axios";
 import { Button } from "../Button";
 import { Spinner } from "../Spinner";
 import { Modal } from "./Modal";
 import { TextArea, TextInput } from "../Input";
+import demodeApi from "../../api/axios";
+import useStorage from "../../hooks/useStorage";
 
 const initialValues = {
   title: "",
@@ -19,21 +19,21 @@ type Props = {
 };
 
 export const NewNewsModal = ({ callback }: Props) => {
-  const { uploadFile } = useUploadFile("news");
-  const [isSending, setIsSending] = useState(false);
+  const { registerData, isSending } = useStorage("news");
   const [img, setImg] = useState<File>();
 
   const { values, handleChange, handleSubmit, setValues } = useFormik({
     initialValues,
-    onSubmit: () => uploadFiles(),
+    onSubmit: () =>
+      registerData(
+        img,
+        () => toast.error("Se debe adjuntar una imagen"),
+        (error) => toast.error("Ocurrió un error: ", error),
+        (url) => newPost(url)
+      ),
   });
 
-  const uploadFiles = async () => {
-    setIsSending(true);
-    uploadFile(img, registerProduct);
-  };
-
-  const registerProduct = (url: string) => {
+  const newPost = (url: string) => {
     demodeApi
       .post("/posts/new", {
         title: values.title,
@@ -45,7 +45,6 @@ export const NewNewsModal = ({ callback }: Props) => {
 
         setValues(initialValues);
         setImg(undefined);
-        setIsSending(false);
         callback(res.data);
       });
   };
