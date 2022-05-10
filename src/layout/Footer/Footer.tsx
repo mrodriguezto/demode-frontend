@@ -1,4 +1,4 @@
-import { SocialMedia } from "../SocialMedia";
+import { SocialMedia } from "../../components/SocialMedia";
 
 export const Footer = () => {
   return (

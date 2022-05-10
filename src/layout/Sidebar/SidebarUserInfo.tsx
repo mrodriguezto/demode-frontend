@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { RiLogoutBoxLine } from "react-icons/ri";
 
 import { AuthContext } from "../../context/AuthContext";
-import { Button } from "../Button/index";
+import { Button } from "../../components/Button/index";
 
 export const SidebarUserInfo = () => {
   const { user, logout } = useContext(AuthContext);

@@ -1,6 +1,7 @@
 import { Toaster } from "react-hot-toast";
-import { Footer } from "./components/Footer";
-import { Header } from "./components/Header";
+
+import { Footer } from "./layout/Footer";
+import { Header } from "./layout/Header";
 import Routes from "./components/Routes";
 import AuthProvider from "./context/AuthContext";
 

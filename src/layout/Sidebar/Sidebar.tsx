@@ -1,10 +1,11 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { Button } from "../Button";
+
+import { Button } from "../../components/Button";
 import { RiMenuFill, RiCloseFill } from "react-icons/ri";
 import { SidebarUserInfo } from "./SidebarUserInfo";
 import { AuthContext } from "../../context/AuthContext";
-import { SocialMedia } from "../SocialMedia";
+import { SocialMedia } from "../../components/SocialMedia";
 
 const sidebarLinks = [
   { path: "/news", title: "NOTICIAS" },
