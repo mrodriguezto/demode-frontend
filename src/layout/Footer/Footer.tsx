@@ -20,7 +20,7 @@ export const Footer = () => {
           <a href='/events'>
             <h2 className='font-bold text-lg'>EVENTOS</h2>
           </a>
-          <a href='/news'>
+          <a href='/posts'>
             <span>Noticias</span>
           </a>
           <a href='/eventos'>

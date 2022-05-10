@@ -16,7 +16,7 @@ type Props = {
   };
 };
 
-export const EditNewsModal = ({ callback, id, initialValues }: Props) => {
+export const EditPostModal = ({ callback, id, initialValues }: Props) => {
   const [isSending, setIsSending] = useState(false);
 
   const { values, handleChange, handleSubmit, setValues } = useFormik({
@@ -41,7 +41,7 @@ export const EditNewsModal = ({ callback, id, initialValues }: Props) => {
   };
 
   return (
-    <Modal modalId={`editNewsModal${id}`}>
+    <Modal modalId={`editPostModal${id}`}>
       <h6 className='font-semibold text-xl'>NUEVO ARTÍCULO</h6>
       <br />
       <form onSubmit={handleSubmit} noValidate>

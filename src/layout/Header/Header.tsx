@@ -4,7 +4,7 @@ import Logo from "../../assets/logo-white.png";
 import { Sidebar } from "../Sidebar";
 
 const navLinks = [
-  { path: "/news", title: "NOTICIAS" },
+  { path: "/posts", title: "NOTICIAS" },
   { path: "/events", title: "CONCIERTOS" },
 ];
 

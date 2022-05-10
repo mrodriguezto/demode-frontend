@@ -2,33 +2,33 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import demodeApi from "../api/axios";
 import { Post } from "../types/dataTypes";
-const useNews = () => {
-  const [news, setNews] = useState<Post[]>([]);
+const usePosts = () => {
+  const [posts, setPosts] = useState<Post[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    loadNews();
+    loadPosts();
   }, []);
 
-  const loadNews = async () => {
+  const loadPosts = async () => {
     try {
       const res = await demodeApi.get<Post[]>("/posts");
       setIsLoading(false);
-      setNews(res.data);
+      setPosts(res.data);
     } catch (error) {
       toast.error("No se lograron obtener los datos");
     }
   };
 
-  const addNews = (data: Post) => {
-    setNews((values) => [...values, data]);
+  const addPosts = (data: Post) => {
+    setPosts((values) => [...values, data]);
   };
 
   return {
-    news,
+    posts,
     isLoading,
-    addNews,
+    addPosts,
   };
 };
 
-export default useNews;
+export default usePosts;

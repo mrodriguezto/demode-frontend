@@ -18,8 +18,8 @@ type Props = {
   callback: (data: any) => void;
 };
 
-export const NewNewsModal = ({ callback }: Props) => {
-  const { registerData, isSending } = useStorage("news");
+export const NewPostModal = ({ callback }: Props) => {
+  const { registerData, isSending } = useStorage("posts");
   const [img, setImg] = useState<File>();
 
   const { values, handleChange, handleSubmit, setValues } = useFormik({
@@ -56,7 +56,7 @@ export const NewNewsModal = ({ callback }: Props) => {
   };
 
   return (
-    <Modal modalId='newNewsModal'>
+    <Modal modalId='newPostModal'>
       <h6 className='font-semibold text-xl'>NUEVO ARTÍCULO</h6>
       <br />
       <form onSubmit={handleSubmit} noValidate>

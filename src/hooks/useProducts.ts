@@ -8,10 +8,10 @@ const useProducts = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    loadNews();
+    loadProducts();
   }, []);
 
-  const loadNews = async () => {
+  const loadProducts = async () => {
     try {
       const res = await demodeApi.get<Product[]>("/products");
       setIsLoading(false);

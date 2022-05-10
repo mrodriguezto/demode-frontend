@@ -3,7 +3,7 @@ import Logo from "../assets/logo-white.png";
 import { Button } from "../components/Button";
 import { MediaPreview } from "../components/MediaPreview";
 import { PageTitle } from "../components/Title";
-import { ProductCard, NewsCard, EventCard } from "../components/Card";
+import { ProductCard, PostCard, EventCard } from "../components/Card";
 import { Spinner } from "../components/Spinner";
 import usePreviewData from "../hooks/usePreviewData";
 
@@ -54,12 +54,12 @@ const LandingPage = () => {
             </Link>
           </section>
 
-          {/* News Section */}
+          {/* Post Section */}
           <PageTitle title='Noticias' />
           <section className='text-white container mx-auto max-w-5xl px-6 md:px-12 flex flex-col items-center mt-8 mb-16'>
             <div className='min-h-full grid md:grid-cols-2 gap-x-8 gap-y-4 container lg:max-w-5xl mx-auto px-0 sm:px-8 py-10'>
               {previewData?.posts.map((item) => (
-                <NewsCard
+                <PostCard
                   id={item._id}
                   imgUrl={item.img}
                   title={item.title}
@@ -69,7 +69,7 @@ const LandingPage = () => {
                 />
               ))}
             </div>
-            <Link to='/news'>
+            <Link to='/posts'>
               <Button>Ver más</Button>
             </Link>
           </section>

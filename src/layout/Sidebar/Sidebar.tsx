@@ -8,7 +8,7 @@ import { AuthContext } from "../../context/AuthContext";
 import { SocialMedia } from "../../components/SocialMedia";
 
 const sidebarLinks = [
-  { path: "/news", title: "NOTICIAS" },
+  { path: "/posts", title: "NOTICIAS" },
   { path: "/events", title: "EVENTOS" },
   { path: "/products", title: "PRODUCTOS" },
   { path: "/about", title: "CONÓCENOS" },

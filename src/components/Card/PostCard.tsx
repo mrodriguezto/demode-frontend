@@ -5,11 +5,11 @@ import { RiMore2Fill } from "react-icons/ri";
 
 import demodeApi from "../../api/axios";
 import { Button } from "../Button";
-import { EditNewsModal } from "../Modal";
+import { EditPostModal } from "../Modal";
 import { CardMenu } from "./CardMenu";
 import { WideCard } from "./WideCard";
 
-type NewsCardProps = {
+type PostCardProps = {
   id: string;
   url: string;
   title: string;
@@ -19,14 +19,14 @@ type NewsCardProps = {
   admin?: boolean;
 };
 
-export const NewsCard = ({
+export const PostCard = ({
   id,
   title,
   content,
   date,
   imgUrl,
   admin = false,
-}: NewsCardProps) => {
+}: PostCardProps) => {
   const [menuIsActive, setMenuIsActive] = useState(false);
   const formatedDate = dayjs(date)
     .locale("es")
@@ -35,7 +35,7 @@ export const NewsCard = ({
   const handleDelete = async () => {
     try {
       await demodeApi.delete(`/posts/${id}/delete`);
-      window.location.reload();
+      window.location.reload(); // TODO: Update items with react redux
     } catch (error) {
       toast.error("No se logró eliminar el item");
     }
@@ -62,14 +62,14 @@ export const NewsCard = ({
             {menuIsActive && (
               <CardMenu
                 onDelete={handleDelete}
-                dataTarget={`#editNewsModal${id}`}
+                dataTarget={`#editPostModal${id}`}
                 dataToggle='modal'
               />
             )}
           </>
         )}
       </div>
-      <EditNewsModal
+      <EditPostModal
         callback={() => {}}
         id={id}
         initialValues={{

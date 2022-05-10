@@ -36,8 +36,8 @@ export const EventCard = ({
 
   const handleDelete = async () => {
     try {
-      const res = await demodeApi.delete(`/events/${id}/delete`);
-      window.location.reload();
+      await demodeApi.delete(`/events/${id}/delete`);
+      window.location.reload(); // TODO: Update items with react redux
     } catch (error) {
       toast.error("No se logró eliminar el item");
     }

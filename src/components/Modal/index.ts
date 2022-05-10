@@ -1,7 +1,7 @@
 export { Modal } from "./Modal";
 export { EditEventModal } from "./EditEventModal";
-export { EditNewsModal } from "./EditNewsModal";
+export { EditPostModal } from "./EditPostModal";
 export { EditProductModal } from "./EditProductModal";
 export { NewEventModal } from "./NewEventModal";
-export { NewNewsModal } from "./NewNewsModal";
+export { NewPostModal } from "./NewPostModal";
 export { NewProductModal } from "./NewProductModal";
