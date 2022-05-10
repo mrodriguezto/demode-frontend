@@ -1,12 +1,12 @@
 import { useContext } from "react";
-import Button from "../components/Button";
+import { Button } from "../components/Button";
 
-import PageTitle from "../components/PageTitle";
-import ProductCard from "../components/ProductCard";
-import Spinner from "../components/Spinner";
+import { PageTitle } from "../components/Title";
+import { ProductCard } from "../components/Card";
+import { Spinner } from "../components/Spinner";
 import { AuthContext } from "../context/AuthContext";
+import { NewProductModal } from "../components/Modal";
 import useProducts from "../hooks/useProducts";
-import NewProductModal from "../components/Modal/NewProductModal";
 
 const ProductsPage = () => {
   const { isLoading, products, addProduct } = useProducts();

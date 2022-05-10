@@ -1,20 +1,11 @@
 import { Link } from "react-router-dom";
 import Logo from "../assets/logo-white.png";
-import Button from "../components/Button";
-import EventCard from "../components/EventCard";
-import MediaPreview from "../components/MediaPreview";
-import NewsCard from "../components/NewsCard";
-import PageTitle from "../components/PageTitle";
-import ProductCard from "../components/ProductCard";
-import Spinner from "../components/Spinner";
+import { Button } from "../components/Button";
+import { MediaPreview } from "../components/MediaPreview";
+import { PageTitle } from "../components/Title";
+import { ProductCard, NewsCard, EventCard } from "../components/Card";
+import { Spinner } from "../components/Spinner";
 import usePreviewData from "../hooks/usePreviewData";
-
-const contentLinks = [
-  { path: "/photos", title: "Fotos" },
-  { path: "/videos", title: "Videos" },
-  { path: "/products", title: "Productos" },
-  { path: "/contact", title: "Contacto" },
-];
 
 const LandingPage = () => {
   const { previewData, isLoading } = usePreviewData();

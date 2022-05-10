@@ -1,15 +1,15 @@
-import PageTitle from "../components/PageTitle";
+import { useState } from "react";
 import { useFormik } from "formik";
-import Button from "../components/Button";
-import Card from "../components/Card";
-import TextField from "../components/TextField";
-import TextArea from "../components/TextArea";
-import SocialMedia from "../components/SocialMedia";
+import toast from "react-hot-toast";
+
+import { PageTitle } from "../components/Title";
+import { Card } from "../components/Card";
+import { SocialMedia } from "../components/SocialMedia";
 import demodeApi from "../api/axios";
 import { AxiosErrorResponse, ContactResponse } from "../types/dataTypes";
-import { useState } from "react";
-import Spinner from "../components/Spinner";
-import toast from "react-hot-toast";
+import { Spinner } from "../components/Spinner";
+import { Button } from "../components/Button";
+import { TextInput, TextArea } from "../components/Input";
 
 const initialValues = {
   name: "",
@@ -55,7 +55,7 @@ const Contact = () => {
           <h6 className='font-semibold text-xl'>DÉJANOS UN MENSAJE</h6>
           <br />
           <form onSubmit={handleSubmit} noValidate>
-            <TextField
+            <TextInput
               onChange={handleChange}
               label='Nombre'
               name='name'
@@ -64,7 +64,7 @@ const Contact = () => {
               placeholder='Ingrese su nombre...'
               required
             />
-            <TextField
+            <TextInput
               onChange={handleChange}
               label='Correo'
               name='email'

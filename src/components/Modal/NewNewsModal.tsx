@@ -1,13 +1,13 @@
-import Modal from "./index";
-import useUploadFile from "../../hooks/useUploadFile";
 import { useState } from "react";
 import { useFormik } from "formik";
-import demodeApi from "../../api/axios";
 import toast from "react-hot-toast";
-import TextField from "../TextField";
-import TextArea from "../TextArea";
-import Button from "../Button";
-import Spinner from "../Spinner";
+
+import useUploadFile from "../../hooks/useUploadFile";
+import demodeApi from "../../api/axios";
+import { Button } from "../Button";
+import { Spinner } from "../Spinner";
+import { Modal } from "./Modal";
+import { TextArea, TextInput } from "../Input";
 
 const initialValues = {
   title: "",
@@ -18,7 +18,7 @@ type Props = {
   callback: (data: any) => void;
 };
 
-const NewNewsModal = ({ callback }: Props) => {
+export const NewNewsModal = ({ callback }: Props) => {
   const { uploadFile } = useUploadFile("news");
   const [isSending, setIsSending] = useState(false);
   const [img, setImg] = useState<File>();
@@ -61,7 +61,7 @@ const NewNewsModal = ({ callback }: Props) => {
       <h6 className='font-semibold text-xl'>NUEVO ARTÍCULO</h6>
       <br />
       <form onSubmit={handleSubmit} noValidate>
-        <TextField
+        <TextInput
           onChange={handleChange}
           label='Título'
           name='title'
@@ -115,5 +115,3 @@ const NewNewsModal = ({ callback }: Props) => {
     </Modal>
   );
 };
-
-export default NewNewsModal;

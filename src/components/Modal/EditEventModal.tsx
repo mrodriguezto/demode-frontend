@@ -1,13 +1,11 @@
-import Modal from "./index";
-import useUploadFile from "../../hooks/useUploadFile";
 import { useState } from "react";
 import { useFormik } from "formik";
+
 import demodeApi from "../../api/axios";
-import toast from "react-hot-toast";
-import TextField from "../TextField";
-import TextArea from "../TextArea";
-import Button from "../Button";
-import Spinner from "../Spinner";
+import { Modal } from "./Modal";
+import { Button } from "../Button";
+import { TextArea, TextInput } from "../Input";
+import { Spinner } from "../Spinner";
 
 type Props = {
   callback: (data: any) => void;
@@ -21,7 +19,7 @@ type Props = {
   };
 };
 
-const EditEventModal = ({ callback, id, initialValues }: Props) => {
+export const EditEventModal = ({ callback, id, initialValues }: Props) => {
   const [isSending, setIsSending] = useState(false);
 
   const { values, handleChange, handleSubmit, setValues } = useFormik({
@@ -53,7 +51,7 @@ const EditEventModal = ({ callback, id, initialValues }: Props) => {
       <h6 className='font-semibold text-xl'>NUEVO ARTÍCULO</h6>
       <br />
       <form onSubmit={handleSubmit} noValidate>
-        <TextField
+        <TextInput
           onChange={handleChange}
           label='Título'
           name='title'
@@ -69,7 +67,7 @@ const EditEventModal = ({ callback, id, initialValues }: Props) => {
           placeholder='Ingrese la descripción...'
           required
         />
-        <TextField
+        <TextInput
           onChange={handleChange}
           label='Lugar'
           name='place'
@@ -77,7 +75,7 @@ const EditEventModal = ({ callback, id, initialValues }: Props) => {
           placeholder='Ingrese el lugar...'
           required
         />
-        <TextField
+        <TextInput
           onChange={handleChange}
           label='Fecha y hora'
           name='starts_at'
@@ -87,7 +85,7 @@ const EditEventModal = ({ callback, id, initialValues }: Props) => {
           required
         />
 
-        <TextField
+        <TextInput
           onChange={handleChange}
           label='Enlace'
           name='url'
@@ -117,5 +115,3 @@ const EditEventModal = ({ callback, id, initialValues }: Props) => {
     </Modal>
   );
 };
-
-export default EditEventModal;

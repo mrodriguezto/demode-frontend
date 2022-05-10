@@ -1,12 +1,14 @@
-import Spinner from "../components/Spinner";
-import "dayjs/locale/es";
-import PageTitle from "../components/PageTitle";
-import useNews from "../hooks/useNews";
-import NewsCard from "../components/NewsCard";
-import { AuthContext } from "../context/AuthContext";
 import { useContext } from "react";
-import Button from "../components/Button";
-import NewNewsModal from "../components/Modal/NewNewsModal";
+
+import { Spinner } from "../components/Spinner";
+import { PageTitle } from "../components/Title";
+import { NewsCard } from "../components/Card";
+import { AuthContext } from "../context/AuthContext";
+import { Button } from "../components/Button";
+import { NewNewsModal } from "../components/Modal";
+import useNews from "../hooks/useNews";
+
+import "dayjs/locale/es";
 
 const NewsPage = () => {
   const { isLoading, news, addNews } = useNews();

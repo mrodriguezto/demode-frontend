@@ -1,13 +1,13 @@
-import Modal from "./index";
-import useUploadFile from "../../hooks/useUploadFile";
 import { useState } from "react";
 import { useFormik } from "formik";
-import demodeApi from "../../api/axios";
 import toast from "react-hot-toast";
-import TextField from "../TextField";
-import TextArea from "../TextArea";
-import Button from "../Button";
-import Spinner from "../Spinner";
+
+import useUploadFile from "../../hooks/useUploadFile";
+import demodeApi from "../../api/axios";
+import { Button } from "../Button";
+import { Spinner } from "../Spinner";
+import { Modal } from "./Modal";
+import { TextArea, TextInput } from "../Input";
 
 const initialValues = {
   title: "",
@@ -20,7 +20,7 @@ type Props = {
   callback: (data: any) => void;
 };
 
-const NewProductModal = ({ callback }: Props) => {
+export const NewProductModal = ({ callback }: Props) => {
   const { uploadFile } = useUploadFile("products");
   const [isSending, setIsSending] = useState(false);
   const [img, setImg] = useState<File>();
@@ -65,7 +65,7 @@ const NewProductModal = ({ callback }: Props) => {
       <h6 className='font-semibold text-xl'>NUEVO ARTÍCULO</h6>
       <br />
       <form onSubmit={handleSubmit} noValidate>
-        <TextField
+        <TextInput
           onChange={handleChange}
           label='Título'
           name='title'
@@ -81,7 +81,7 @@ const NewProductModal = ({ callback }: Props) => {
           placeholder='Ingrese la descripción...'
           required
         />
-        <TextField
+        <TextInput
           onChange={handleChange}
           label='Categoría'
           name='categories'
@@ -89,7 +89,7 @@ const NewProductModal = ({ callback }: Props) => {
           placeholder='Ingrese la categoría...'
           required
         />
-        <TextField
+        <TextInput
           onChange={handleChange}
           label='Enlace'
           name='url'
@@ -134,5 +134,3 @@ const NewProductModal = ({ callback }: Props) => {
     </Modal>
   );
 };
-
-export default NewProductModal;

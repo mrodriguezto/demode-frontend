@@ -6,13 +6,13 @@ import JulioImg from "../assets/member-julio.jpeg";
 import DanImg from "../assets/member-dan.jpg";
 import YairImg from "../assets/member-yair.jpeg";
 
-import PageTitle from "../components/PageTitle";
-import SmallMemberInfo from "../components/SmallMemberInfo";
+import { PageTitle } from "../components/Title";
+import { SmallMemberInfo } from "../components/SmallMemberInfo";
 
 const About = () => {
   return (
     <div className='pt-36'>
-      <PageTitle title='Sobre Nosotros' idName="historia"/>
+      <PageTitle title='Sobre Nosotros' idName='historia' />
       <div className='flex lg:flex-row flex-col container max-w-5xl mx-auto'>
         <div className='text-white lg:w-full grid content-center mx-5'>
           <div className='m-4'>
@@ -73,7 +73,7 @@ const About = () => {
         </div>
       </div>
 
-      <PageTitle title='Conócenos' className='mt-10' idName="miembros"/>
+      <PageTitle title='Conócenos' className='mt-10' idName='miembros' />
 
       <SmallMemberInfo
         name='Diego'

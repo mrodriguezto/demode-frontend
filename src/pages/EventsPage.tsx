@@ -1,10 +1,10 @@
 import { useContext } from "react";
-import Button from "../components/Button";
-import EventCard from "../components/EventCard";
-import PageTitle from "../components/PageTitle";
-import Spinner from "../components/Spinner";
+import { Button } from "../components/Button";
+import { EventCard } from "../components/Card";
+import { PageTitle } from "../components/Title";
+import { Spinner } from "../components/Spinner";
 import { AuthContext } from "../context/AuthContext";
-import NewEventModal from "../components/Modal/NewEventModal";
+import { NewEventModal } from "../components/Modal";
 
 import useEvents from "../hooks/useEvents";
 

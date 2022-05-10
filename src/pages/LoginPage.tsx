@@ -1,13 +1,14 @@
-import { useFormik } from "formik";
 import { useContext } from "react";
-import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import Button from "../components/Button";
-import Card from "../components/Card";
-import TextField from "../components/TextField";
+import { useFormik } from "formik";
+import toast from "react-hot-toast";
+
+import { Button } from "../components/Button";
+import { Card } from "../components/Card";
+import { TextInput } from "../components/Input";
 import { AuthContext } from "../context/AuthContext";
 import { AxiosErrorResponse } from "../types/dataTypes";
-import PageTitle from "../components/PageTitle/index";
+import { PageTitle } from "../components/Title";
 
 const LoginPage = () => {
   const { signin } = useContext(AuthContext);
@@ -39,7 +40,7 @@ const LoginPage = () => {
         {/* TODO: Make a component out of this div */}
         <Card>
           <form onSubmit={handleSubmit} noValidate>
-            <TextField
+            <TextInput
               onChange={handleChange}
               label='Correo'
               name='email'
@@ -48,7 +49,7 @@ const LoginPage = () => {
               placeholder='Ingrese su correo...'
               required
             />
-            <TextField
+            <TextInput
               onChange={handleChange}
               label='Contraseña'
               name='password'

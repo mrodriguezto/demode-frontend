@@ -1,12 +1,11 @@
-import Modal from "./index";
-import useUploadFile from "../../hooks/useUploadFile";
 import { useState } from "react";
 import { useFormik } from "formik";
+
 import demodeApi from "../../api/axios";
-import TextField from "../TextField";
-import TextArea from "../TextArea";
-import Button from "../Button";
-import Spinner from "../Spinner";
+import { Button } from "../Button";
+import { Spinner } from "../Spinner";
+import { Modal } from "./Modal";
+import { TextInput, TextArea } from "../Input";
 
 type Props = {
   callback: (data: any) => void;
@@ -19,7 +18,7 @@ type Props = {
   };
 };
 
-const EditProductModal = ({ callback, id, initialValues }: Props) => {
+export const EditProductModal = ({ callback, id, initialValues }: Props) => {
   const [isSending, setIsSending] = useState(false);
 
   const { values, handleChange, handleSubmit, setValues } = useFormik({
@@ -50,7 +49,7 @@ const EditProductModal = ({ callback, id, initialValues }: Props) => {
       <h6 className='font-semibold text-xl'>NUEVO ARTÍCULO</h6>
       <br />
       <form onSubmit={handleSubmit} noValidate>
-        <TextField
+        <TextInput
           onChange={handleChange}
           label='Título'
           name='title'
@@ -66,7 +65,7 @@ const EditProductModal = ({ callback, id, initialValues }: Props) => {
           placeholder='Ingrese la descripción...'
           required
         />
-        <TextField
+        <TextInput
           onChange={handleChange}
           label='Categoría'
           name='categories'
@@ -74,7 +73,7 @@ const EditProductModal = ({ callback, id, initialValues }: Props) => {
           placeholder='Ingrese la categoría...'
           required
         />
-        <TextField
+        <TextInput
           onChange={handleChange}
           label='Enlace'
           name='url'
@@ -104,5 +103,3 @@ const EditProductModal = ({ callback, id, initialValues }: Props) => {
     </Modal>
   );
 };
-
-export default EditProductModal;

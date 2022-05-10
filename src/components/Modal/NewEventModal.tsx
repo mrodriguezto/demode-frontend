@@ -1,13 +1,12 @@
-import Modal from "./index";
-import useUploadFile from "../../hooks/useUploadFile";
 import { useState } from "react";
 import { useFormik } from "formik";
-import demodeApi from "../../api/axios";
 import toast from "react-hot-toast";
-import TextField from "../TextField";
-import TextArea from "../TextArea";
-import Button from "../Button";
-import Spinner from "../Spinner";
+
+import demodeApi from "../../api/axios";
+import { Button } from "../Button";
+import { Spinner } from "../Spinner";
+import { Modal } from "./Modal";
+import { TextArea, TextInput } from "../Input";
 
 const initialValues = {
   title: "",
@@ -21,7 +20,7 @@ type Props = {
   callback: (data: any) => void;
 };
 
-const NewEventModal = ({ callback }: Props) => {
+export const NewEventModal = ({ callback }: Props) => {
   const [isSending, setIsSending] = useState(false);
 
   const { values, handleChange, handleSubmit, setValues } = useFormik({
@@ -54,7 +53,7 @@ const NewEventModal = ({ callback }: Props) => {
       <h6 className='font-semibold text-xl'>NUEVO ARTÍCULO</h6>
       <br />
       <form onSubmit={handleSubmit} noValidate>
-        <TextField
+        <TextInput
           onChange={handleChange}
           label='Título'
           name='title'
@@ -70,7 +69,7 @@ const NewEventModal = ({ callback }: Props) => {
           placeholder='Ingrese la descripción...'
           required
         />
-        <TextField
+        <TextInput
           onChange={handleChange}
           label='Lugar'
           name='place'
@@ -78,7 +77,7 @@ const NewEventModal = ({ callback }: Props) => {
           placeholder='Ingrese el lugar...'
           required
         />
-        <TextField
+        <TextInput
           onChange={handleChange}
           label='Fecha y hora'
           name='starts_at'
@@ -88,7 +87,7 @@ const NewEventModal = ({ callback }: Props) => {
           required
         />
 
-        <TextField
+        <TextInput
           onChange={handleChange}
           label='Enlace'
           name='url'
@@ -118,5 +117,3 @@ const NewEventModal = ({ callback }: Props) => {
     </Modal>
   );
 };
-
-export default NewEventModal;
