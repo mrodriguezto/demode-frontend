@@ -9,7 +9,7 @@ import { NewEventModal } from "../components/Modal";
 import useEvents from "../hooks/useEvents";
 
 const EventsPage = () => {
-  const { events, isLoading, addEvent } = useEvents();
+  const { events, isLoading, addNewEvent } = useEvents();
   const { status } = useContext(AuthContext);
 
   return (
@@ -45,7 +45,7 @@ const EventsPage = () => {
           </div>
         </div>
       )}
-      <NewEventModal callback={addEvent} />
+      <NewEventModal callback={addNewEvent} />
     </div>
   );
 };

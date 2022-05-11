@@ -6,6 +6,9 @@ import { Modal } from "./Modal";
 import { Button } from "../Button";
 import { TextArea, TextInput } from "../Input";
 import { Spinner } from "../Spinner";
+import { Event } from "../../types/dataTypes";
+import { useAppDispatch } from "../../app/hooks";
+import { updateEvent } from "../../feature/eventsSlice";
 
 type Props = {
   callback: (data: any) => void;
@@ -21,16 +24,17 @@ type Props = {
 
 export const EditEventModal = ({ callback, id, initialValues }: Props) => {
   const [isSending, setIsSending] = useState(false);
+  const dispatch = useAppDispatch();
 
   const { values, handleChange, handleSubmit, setValues } = useFormik({
     initialValues,
-    onSubmit: () => updateEvent(),
+    onSubmit: () => editEvent(),
   });
 
-  const updateEvent = () => {
+  const editEvent = () => {
     setIsSending(true);
     demodeApi
-      .put(`/events/${id}/edit`, {
+      .put<Event>(`/events/${id}/edit`, {
         title: values.title,
         description: values.description,
         place: values.place,
@@ -38,8 +42,7 @@ export const EditEventModal = ({ callback, id, initialValues }: Props) => {
         url: values.url,
       })
       .then((res) => {
-        window.location.reload();
-
+        dispatch(updateEvent(res.data));
         setValues(initialValues);
         setIsSending(false);
         callback(res.data);

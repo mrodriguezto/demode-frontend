@@ -8,6 +8,8 @@ import { Button } from "../Button";
 import { EditEventModal } from "../Modal";
 import { CardMenu } from "./CardMenu";
 import { WideCard } from "./WideCard";
+import { useAppDispatch } from "../../app/hooks";
+import { deleteEvent } from "../../feature/eventsSlice";
 
 type EventCardProps = {
   id: string;
@@ -29,6 +31,7 @@ export const EventCard = ({
   admin = false,
 }: EventCardProps) => {
   const [menuIsActive, setMenuIsActive] = useState(false);
+  const dispatch = useAppDispatch();
 
   const formatedDate = dayjs(starts_at)
     .locale("es")
@@ -37,7 +40,7 @@ export const EventCard = ({
   const handleDelete = async () => {
     try {
       await demodeApi.delete(`/events/${id}/delete`);
-      window.location.reload(); // TODO: Update items with react redux
+      dispatch(deleteEvent(id)); // TODO: Update items with react redux
     } catch (error) {
       toast.error("No se logró eliminar el item");
     }
@@ -83,7 +86,13 @@ export const EventCard = ({
       <EditEventModal
         id={id}
         callback={() => {}}
-        initialValues={{ description, place, starts_at, title, url }}
+        initialValues={{
+          description,
+          place,
+          starts_at,
+          title,
+          url,
+        }}
       />
     </WideCard>
   );

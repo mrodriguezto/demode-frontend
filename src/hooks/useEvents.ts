@@ -2,9 +2,12 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import demodeApi from "../api/axios";
 import { Event } from "../types/dataTypes";
+import { useAppSelector, useAppDispatch } from "../app/hooks";
+import { initializeEvents, addEvent } from "../feature/eventsSlice";
 
 const useEvents = () => {
-  const [events, setEvents] = useState<Event[]>([]);
+  const events = useAppSelector((state) => state.events.value);
+  const dispatch = useAppDispatch();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -15,20 +18,20 @@ const useEvents = () => {
     try {
       const res = await demodeApi.get<Event[]>("/events");
       setIsLoading(false);
-      setEvents(res.data);
+      dispatch(initializeEvents(res.data));
     } catch (error) {
       toast.error("No se lograron obtener los datos");
     }
   };
 
-  const addEvent = (data: Event) => {
-    setEvents((values) => [...values, data]);
+  const addNewEvent = (data: Event) => {
+    dispatch(addEvent(data));
   };
 
   return {
     events,
     isLoading,
-    addEvent,
+    addNewEvent,
   };
 };
 
