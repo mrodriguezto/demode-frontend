@@ -11,8 +11,9 @@ import { useAppDispatch } from "../../app/hooks";
 import { updateEvent } from "../../feature/eventsSlice";
 
 type Props = {
-  callback: (data: any) => void;
   id: string;
+  isOpened: boolean;
+  onClose: () => void;
   initialValues: {
     title: string;
     description: string;
@@ -22,7 +23,12 @@ type Props = {
   };
 };
 
-export const EditEventModal = ({ callback, id, initialValues }: Props) => {
+export const EditEventModal = ({
+  id,
+  initialValues,
+  isOpened,
+  onClose,
+}: Props) => {
   const [isSending, setIsSending] = useState(false);
   const dispatch = useAppDispatch();
 
@@ -45,12 +51,12 @@ export const EditEventModal = ({ callback, id, initialValues }: Props) => {
         dispatch(updateEvent(res.data));
         setValues(initialValues);
         setIsSending(false);
-        callback(res.data);
+        onClose();
       });
   };
 
   return (
-    <Modal modalId={`editEventModal${id}`}>
+    <Modal isOpened={isOpened} onClose={onClose}>
       <h6 className='font-semibold text-xl'>NUEVO ARTÍCULO</h6>
       <br />
       <form onSubmit={handleSubmit} noValidate>

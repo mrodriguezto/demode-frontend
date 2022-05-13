@@ -18,6 +18,15 @@ module.exports = {
       backgroundImage: {
         "hero-img": "url('./assets/hero-img.jpg')",
       },
+      animation: {
+        fadeIn: "fadeIn 0.15s ease-in",
+      },
+      keyframes: {
+        fadeIn: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1.0" },
+        },
+      },
     },
   },
   plugins: [],

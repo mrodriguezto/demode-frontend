@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { Button } from "../../components/Button";
@@ -6,6 +6,7 @@ import { RiMenuFill, RiCloseFill } from "react-icons/ri";
 import { SidebarUserInfo } from "./SidebarUserInfo";
 import { AuthContext } from "../../context/AuthContext";
 import { SocialMedia } from "../../components/SocialMedia";
+import useClickAway from "../../hooks/useClickAway";
 
 const sidebarLinks = [
   { path: "/posts", title: "NOTICIAS" },
@@ -18,6 +19,8 @@ const sidebarLinks = [
 export const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { status } = useContext(AuthContext);
+  const sidebarRef = useRef<any>(null);
+  useClickAway(sidebarRef, () => setIsOpen(false));
 
   return (
     <>
@@ -31,6 +34,7 @@ export const Sidebar = () => {
       </Button>
 
       <aside
+        ref={sidebarRef}
         className={`w-full sm:w-1/2 md:w-72 h-full fixed right-0 top-0 z-50 ease-out duration-200 ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
@@ -46,7 +50,12 @@ export const Sidebar = () => {
           </Button>
           <ul className='space-y-2'>
             {sidebarLinks.map(({ path, title }, index) => (
-              <MenuLink key={index} path={path} title={title} />
+              <MenuLink
+                key={index}
+                path={path}
+                title={title}
+                close={() => setIsOpen(false)}
+              />
             ))}
           </ul>
           <hr className='border-gray-600 my-6 mx-4' />
@@ -62,13 +71,15 @@ export const Sidebar = () => {
 type MenuLinkProps = {
   path: string;
   title: string;
+  close: () => void;
 };
 
-const MenuLink = ({ path, title }: MenuLinkProps) => {
+const MenuLink = ({ path, title, close }: MenuLinkProps) => {
   return (
     <li>
       <Link
         to={path}
+        onClick={close}
         className='flex items-center p-2 text-base font-normal rounded-sm text-white hover:bg-gray-700'
       >
         <span className='ml-2'>{title}</span>

@@ -4,6 +4,7 @@ const buttonSize = {
   sm: "py-2 px-4 text-sm",
   md: "py-3 px-6",
   lg: "py-4 px-8 text-lg",
+  square: "p-3",
 };
 
 const buttonColor = {
@@ -19,7 +20,7 @@ const buttonColor = {
 
 type Props = {
   color?: ThemeColors;
-  size?: Sizes;
+  size?: Sizes | "square";
   children: React.ReactNode;
   className?: string;
   onClick?: () => void;

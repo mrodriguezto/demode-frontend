@@ -31,6 +31,7 @@ export const EventCard = ({
   admin = false,
 }: EventCardProps) => {
   const [menuIsActive, setMenuIsActive] = useState(false);
+  const [isOpened, setIsOpened] = useState(false);
   const dispatch = useAppDispatch();
 
   const formatedDate = dayjs(starts_at)
@@ -45,6 +46,9 @@ export const EventCard = ({
       toast.error("No se logró eliminar el item");
     }
   };
+
+  const handleEdit = () => setIsOpened(true);
+
   return (
     <WideCard>
       <div className='flex flex-col min-h-full relative'>
@@ -58,13 +62,13 @@ export const EventCard = ({
             >
               <RiMore2Fill className='w-6 h-6' />
             </Button>
-            {menuIsActive && (
-              <CardMenu
-                onDelete={handleDelete}
-                dataTarget={`#editEventModal${id}`}
-                dataToggle='modal'
-              />
-            )}
+
+            <CardMenu
+              isOpened={menuIsActive}
+              handleClose={() => setMenuIsActive(false)}
+              onDelete={handleDelete}
+              onEdit={handleEdit}
+            />
           </>
         )}
         <div>
@@ -85,7 +89,6 @@ export const EventCard = ({
       </div>
       <EditEventModal
         id={id}
-        callback={() => {}}
         initialValues={{
           description,
           place,
@@ -93,6 +96,8 @@ export const EventCard = ({
           title,
           url,
         }}
+        isOpened={isOpened}
+        onClose={() => setIsOpened(false)}
       />
     </WideCard>
   );
