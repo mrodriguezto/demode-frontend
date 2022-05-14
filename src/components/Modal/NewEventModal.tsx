@@ -7,6 +7,8 @@ import { Button } from "../Button";
 import { Spinner } from "../Spinner";
 import { Modal } from "./Modal";
 import { TextArea, TextInput } from "../Input";
+import { useAppDispatch } from "../../app/hooks";
+import { addEvent } from "../../feature/eventsSlice";
 
 const initialValues = {
   title: "",
@@ -17,13 +19,13 @@ const initialValues = {
 };
 
 type Props = {
-  callback: (data: any) => void;
   isOpened: boolean;
   onClose: () => void;
 };
 
-export const NewEventModal = ({ callback, isOpened, onClose }: Props) => {
+export const NewEventModal = ({ isOpened, onClose }: Props) => {
   const [isSending, setIsSending] = useState(false);
+  const dispatch = useAppDispatch();
 
   const { values, handleChange, handleSubmit, setValues } = useFormik({
     initialValues,
@@ -46,7 +48,7 @@ export const NewEventModal = ({ callback, isOpened, onClose }: Props) => {
         setValues(initialValues);
 
         setIsSending(false);
-        callback(res.data);
+        dispatch(addEvent(res.data));
       });
   };
 

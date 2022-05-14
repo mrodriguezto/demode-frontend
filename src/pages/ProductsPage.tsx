@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Button } from "../components/Button";
 
 import { PageTitle } from "../components/Title";
@@ -9,7 +9,8 @@ import { NewProductModal } from "../components/Modal";
 import useProducts from "../hooks/useProducts";
 
 const ProductsPage = () => {
-  const { isLoading, products, addProduct } = useProducts();
+  const [isOpened, setIsOpened] = useState(false);
+  const { isLoading, products } = useProducts();
   const { status } = useContext(AuthContext);
 
   return (
@@ -25,7 +26,7 @@ const ProductsPage = () => {
         <div className='min-h-full container lg:max-w-5xl mx-auto px-0 sm:px-8 py-4'>
           {status === "authenticated" && (
             <div className='flex justify-end mb-8'>
-              <Button dataToggle='modal' dataTarget='#newProductModal'>
+              <Button onClick={() => setIsOpened(true)}>
                 Añadir nuevo producto
               </Button>
             </div>
@@ -45,7 +46,7 @@ const ProductsPage = () => {
           </div>
         </div>
       )}
-      <NewProductModal callback={addProduct} />
+      <NewProductModal isOpened={isOpened} onClose={() => setIsOpened(false)} />
     </div>
   );
 };

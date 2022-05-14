@@ -24,14 +24,9 @@ const useEvents = () => {
     }
   };
 
-  const addNewEvent = (data: Event) => {
-    dispatch(addEvent(data));
-  };
-
   return {
     events,
     isLoading,
-    addNewEvent,
   };
 };
 

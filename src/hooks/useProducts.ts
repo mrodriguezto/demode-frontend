@@ -21,14 +21,9 @@ const useProducts = () => {
     }
   };
 
-  const addProduct = (data: Product) => {
-    setProducts((value) => [...value, data]);
-  };
-
   return {
     products,
     isLoading,
-    addProduct,
   };
 };
 

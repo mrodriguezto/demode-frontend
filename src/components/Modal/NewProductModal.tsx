@@ -17,10 +17,11 @@ const initialValues = {
 };
 
 type Props = {
-  callback: (data: any) => void;
+  isOpened: boolean;
+  onClose: () => void;
 };
 
-export const NewProductModal = ({ callback }: Props) => {
+export const NewProductModal = ({ isOpened, onClose }: Props) => {
   const { registerData, isSending } = useStorage("products");
   const [img, setImg] = useState<File>();
 
@@ -49,7 +50,7 @@ export const NewProductModal = ({ callback }: Props) => {
 
         setValues(initialValues);
         setImg(undefined);
-        callback(res.data);
+        // TODO: dispatch new product
       });
   };
 
@@ -60,7 +61,7 @@ export const NewProductModal = ({ callback }: Props) => {
   };
 
   return (
-    <Modal modalId='newProductModal'>
+    <Modal isOpened={isOpened} onClose={onClose}>
       <h6 className='font-semibold text-xl'>NUEVO ARTÍCULO</h6>
       <br />
       <form onSubmit={handleSubmit} noValidate>

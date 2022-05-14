@@ -10,7 +10,7 @@ import useEvents from "../hooks/useEvents";
 
 const EventsPage = () => {
   const [isOpened, setIsOpened] = useState(false);
-  const { events, isLoading, addNewEvent } = useEvents();
+  const { events, isLoading } = useEvents();
   const { status } = useContext(AuthContext);
 
   return (
@@ -46,11 +46,7 @@ const EventsPage = () => {
           </div>
         </div>
       )}
-      <NewEventModal
-        callback={addNewEvent}
-        isOpened={isOpened}
-        onClose={() => setIsOpened(false)}
-      />
+      <NewEventModal isOpened={isOpened} onClose={() => setIsOpened(false)} />
     </div>
   );
 };

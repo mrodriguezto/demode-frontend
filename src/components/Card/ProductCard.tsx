@@ -28,6 +28,7 @@ export const ProductCard = ({
   admin = false,
 }: ProductCardProps) => {
   const [menuIsActive, setMenuIsActive] = useState(false);
+  const [isOpened, setIsOpened] = useState(false);
 
   const handleDelete = async () => {
     try {
@@ -37,6 +38,8 @@ export const ProductCard = ({
       toast.error("No se logró eliminar el item");
     }
   };
+
+  const handleEdit = () => setIsOpened(true);
 
   return (
     <Card className='flex flex-col min-h-[320px]' fullsize noPadding>
@@ -55,8 +58,9 @@ export const ProductCard = ({
             {menuIsActive && (
               <CardMenu
                 onDelete={handleDelete}
-                dataTarget={`#editProductModal${id}`}
-                dataToggle='modal'
+                isOpened={menuIsActive}
+                handleClose={() => setMenuIsActive(false)}
+                onEdit={handleEdit}
               />
             )}
           </>
@@ -80,7 +84,8 @@ export const ProductCard = ({
       </div>
       <EditProductModal
         id={id}
-        callback={() => {}}
+        isOpened={isOpened}
+        onClose={() => setIsOpened(false)}
         initialValues={{
           categories,
           description,
