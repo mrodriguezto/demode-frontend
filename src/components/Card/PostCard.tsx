@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import { RiMore2Fill } from "react-icons/ri";
 
 import demodeApi from "../../api/axios";
+import { useAppDispatch } from "../../app/hooks";
 import { Button } from "../Button";
 import { EditPostModal } from "../Modal";
 import { CardMenu } from "./CardMenu";
@@ -28,6 +29,8 @@ export const PostCard = ({
   admin = false,
 }: PostCardProps) => {
   const [menuIsActive, setMenuIsActive] = useState(false);
+  const [isOpened, setIsOpened] = useState(false);
+
   const formatedDate = dayjs(date)
     .locale("es")
     .format("ddd DD MMM [de] YYYY - HH:mm");
@@ -62,20 +65,22 @@ export const PostCard = ({
             {menuIsActive && (
               <CardMenu
                 onDelete={handleDelete}
-                dataTarget={`#editPostModal${id}`}
-                dataToggle='modal'
+                handleClose={() => setMenuIsActive(false)}
+                isOpened={menuIsActive}
+                onEdit={() => setIsOpened(true)}
               />
             )}
           </>
         )}
       </div>
       <EditPostModal
-        callback={() => {}}
         id={id}
         initialValues={{
           content,
           title,
         }}
+        isOpened={isOpened}
+        onClose={() => setIsOpened(false)}
       />
     </WideCard>
   );

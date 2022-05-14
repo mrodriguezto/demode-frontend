@@ -8,15 +8,21 @@ import { Button } from "../Button";
 import { TextArea, TextInput } from "../Input";
 
 type Props = {
-  callback: (data: any) => void;
   id: string;
+  isOpened: boolean;
+  onClose: () => void;
   initialValues: {
     title: string;
     content: string;
   };
 };
 
-export const EditPostModal = ({ callback, id, initialValues }: Props) => {
+export const EditPostModal = ({
+  id,
+  initialValues,
+  isOpened,
+  onClose,
+}: Props) => {
   const [isSending, setIsSending] = useState(false);
 
   const { values, handleChange, handleSubmit, setValues } = useFormik({
@@ -36,12 +42,11 @@ export const EditPostModal = ({ callback, id, initialValues }: Props) => {
 
         setValues(initialValues);
         setIsSending(false);
-        callback(res.data);
       });
   };
 
   return (
-    <Modal modalId={`editPostModal${id}`}>
+    <Modal isOpened={isOpened} onClose={onClose}>
       <h6 className='font-semibold text-xl'>NUEVO ARTÍCULO</h6>
       <br />
       <form onSubmit={handleSubmit} noValidate>

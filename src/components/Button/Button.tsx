@@ -26,9 +26,6 @@ type Props = {
   onClick?: () => void;
   type?: "button" | "submit" | "reset";
   disabled?: boolean;
-  dataToggle?: string;
-  dataTarget?: string;
-  dataDismiss?: string;
 };
 
 export const Button = ({
@@ -39,9 +36,6 @@ export const Button = ({
   onClick = () => {},
   type = "button",
   disabled = false,
-  dataToggle = "",
-  dataTarget = "",
-  dataDismiss = "",
 }: Props) => {
   const classNames =
     buttonSize[size] + " " + buttonColor[color] + " " + className;
@@ -51,9 +45,6 @@ export const Button = ({
       onClick={onClick}
       type={type}
       disabled={disabled}
-      data-bs-toggle={dataToggle}
-      data-bs-target={dataTarget}
-      data-bs-dismiss={dataDismiss}
     >
       {children}
     </button>

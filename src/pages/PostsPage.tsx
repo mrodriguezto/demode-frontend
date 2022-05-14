@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 import { Spinner } from "../components/Spinner";
 import { PageTitle } from "../components/Title";
@@ -10,7 +10,8 @@ import usePosts from "../hooks/usePosts";
 
 import "dayjs/locale/es";
 
-const PostPage = () => {
+const PostsPage = () => {
+  const [isOpened, setIsOpened] = useState(false);
   const { isLoading, posts, addPosts } = usePosts();
   const { status } = useContext(AuthContext);
 
@@ -28,7 +29,7 @@ const PostPage = () => {
         <div className='min-h-full container lg:max-w-5xl mx-auto px-0 sm:px-8 py-4 mb-10'>
           {status === "authenticated" && (
             <div className='flex justify-end mb-8'>
-              <Button dataToggle='modal' dataTarget='#newPostModal'>
+              <Button onClick={() => setIsOpened(true)}>
                 Añadir nuevo artículo
               </Button>
             </div>
@@ -48,9 +49,13 @@ const PostPage = () => {
           </div>
         </div>
       )}
-      <NewPostModal callback={addPosts} />
+      <NewPostModal
+        isOpened={isOpened}
+        onClose={() => setIsOpened(false)}
+        callback={addPosts}
+      />
     </div>
   );
 };
 
-export default PostPage;
+export default PostsPage;

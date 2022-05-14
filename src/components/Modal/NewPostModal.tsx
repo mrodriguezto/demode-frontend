@@ -16,9 +16,11 @@ const initialValues = {
 
 type Props = {
   callback: (data: any) => void;
+  isOpened: boolean;
+  onClose: () => void;
 };
 
-export const NewPostModal = ({ callback }: Props) => {
+export const NewPostModal = ({ callback, isOpened, onClose }: Props) => {
   const { registerData, isSending } = useStorage("posts");
   const [img, setImg] = useState<File>();
 
@@ -56,7 +58,7 @@ export const NewPostModal = ({ callback }: Props) => {
   };
 
   return (
-    <Modal modalId='newPostModal'>
+    <Modal isOpened={isOpened} onClose={onClose}>
       <h6 className='font-semibold text-xl'>NUEVO ARTÍCULO</h6>
       <br />
       <form onSubmit={handleSubmit} noValidate>
@@ -83,12 +85,13 @@ export const NewPostModal = ({ callback }: Props) => {
             <input
               onChange={handleImageChange}
               type='file'
-              className='block w-full text-sm text-slate-500
+              className='block w-full text-sm text-gray-400
                     file:mr-4 file:py-2 file:px-4
                     file:rounded-sm file:border-0
                     file:text-sm file:font-semibold
-                    file:bg-alterGray file:text-white
-                    hover:file:bg-darkGray '
+                    file:bg-darkGray file:text-white
+                    file:hover:cursor-pointer
+                    hover:file:bg-darkGray'
             />
           </label>
         </div>

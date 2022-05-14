@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Button } from "../components/Button";
 import { EventCard } from "../components/Card";
 import { PageTitle } from "../components/Title";
@@ -9,6 +9,7 @@ import { NewEventModal } from "../components/Modal";
 import useEvents from "../hooks/useEvents";
 
 const EventsPage = () => {
+  const [isOpened, setIsOpened] = useState(false);
   const { events, isLoading, addNewEvent } = useEvents();
   const { status } = useContext(AuthContext);
 
@@ -25,7 +26,7 @@ const EventsPage = () => {
         <div className='min-h-full container lg:max-w-5xl mx-auto px-0 sm:px-8 py-4'>
           {status === "authenticated" && (
             <div className='flex justify-end mb-8'>
-              <Button dataToggle='modal' dataTarget='#newEventModal'>
+              <Button onClick={() => setIsOpened(true)}>
                 Añadir nuevo evento
               </Button>
             </div>
@@ -45,7 +46,11 @@ const EventsPage = () => {
           </div>
         </div>
       )}
-      <NewEventModal callback={addNewEvent} />
+      <NewEventModal
+        callback={addNewEvent}
+        isOpened={isOpened}
+        onClose={() => setIsOpened(false)}
+      />
     </div>
   );
 };

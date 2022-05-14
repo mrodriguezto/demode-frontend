@@ -18,9 +18,11 @@ const initialValues = {
 
 type Props = {
   callback: (data: any) => void;
+  isOpened: boolean;
+  onClose: () => void;
 };
 
-export const NewEventModal = ({ callback }: Props) => {
+export const NewEventModal = ({ callback, isOpened, onClose }: Props) => {
   const [isSending, setIsSending] = useState(false);
 
   const { values, handleChange, handleSubmit, setValues } = useFormik({
@@ -49,7 +51,7 @@ export const NewEventModal = ({ callback }: Props) => {
   };
 
   return (
-    <Modal modalId='newEventModal'>
+    <Modal isOpened={isOpened} onClose={onClose}>
       <h6 className='font-semibold text-xl'>NUEVO ARTÍCULO</h6>
       <br />
       <form onSubmit={handleSubmit} noValidate>
