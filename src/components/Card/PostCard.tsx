@@ -4,54 +4,46 @@ import toast from "react-hot-toast";
 import { RiMore2Fill } from "react-icons/ri";
 
 import demodeApi from "../../api/axios";
-import { useAppDispatch } from "../../app/hooks";
 import { Button } from "../Button";
 import { EditPostModal } from "../Modal";
 import { CardMenu } from "./CardMenu";
 import { WideCard } from "./WideCard";
+import { useAppDispatch } from "../../store/hooks";
+import { deletePost } from "../../store/slices/posts";
+import { Post } from "../../types/dataTypes";
 
 type PostCardProps = {
-  id: string;
-  url: string;
-  title: string;
-  content: string;
-  date: string;
-  imgUrl: string;
+  post: Post;
   admin?: boolean;
 };
 
-export const PostCard = ({
-  id,
-  title,
-  content,
-  date,
-  imgUrl,
-  admin = false,
-}: PostCardProps) => {
+export const PostCard = ({ post, admin = false }: PostCardProps) => {
   const [menuIsActive, setMenuIsActive] = useState(false);
   const [isOpened, setIsOpened] = useState(false);
+  const dispatch = useAppDispatch();
 
-  const formatedDate = dayjs(date)
+  const formatedDate = dayjs(post.createdAt)
     .locale("es")
     .format("ddd DD MMM [de] YYYY - HH:mm");
 
   const handleDelete = async () => {
     try {
-      await demodeApi.delete(`/posts/${id}/delete`);
-      window.location.reload(); // TODO: Update items with react redux
+      await demodeApi.delete(`/posts/${post._id}/delete`);
+      dispatch(deletePost(post._id));
+      setMenuIsActive(false);
     } catch (error) {
       toast.error("No se logró eliminar el item");
     }
   };
 
   return (
-    <WideCard imgSrc={imgUrl}>
+    <WideCard imgSrc={post.img}>
       <div className='relative'>
         <small className='text-gray-600 text-sm font-body'>
           {formatedDate}
         </small>
-        <h3 className='font-title font-bold text-xl'>{title}</h3>
-        <p className='text-gray-200 font-body'>{content}</p>
+        <h3 className='font-title font-bold text-xl'>{post.title}</h3>
+        <p className='text-gray-200 font-body'>{post.content}</p>
         {admin && (
           <>
             <Button
@@ -74,11 +66,7 @@ export const PostCard = ({
         )}
       </div>
       <EditPostModal
-        id={id}
-        initialValues={{
-          content,
-          title,
-        }}
+        post={post}
         isOpened={isOpened}
         onClose={() => setIsOpened(false)}
       />

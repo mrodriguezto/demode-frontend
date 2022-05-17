@@ -7,8 +7,8 @@ import { Button } from "../Button";
 import { Spinner } from "../Spinner";
 import { Modal } from "./Modal";
 import { TextArea, TextInput } from "../Input";
-import { useAppDispatch } from "../../app/hooks";
-import { addEvent } from "../../feature/eventsSlice";
+import { useAppDispatch } from "../../store/hooks";
+import { addEvent } from "../../store/slices/events/eventsSlice";
 
 const initialValues = {
   title: "",

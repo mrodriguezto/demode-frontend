@@ -12,7 +12,7 @@ import "dayjs/locale/es";
 
 const PostsPage = () => {
   const [isOpened, setIsOpened] = useState(false);
-  const { isLoading, posts, addPosts } = usePosts();
+  const { isLoading, posts } = usePosts();
   const { status } = useContext(AuthContext);
 
   return (
@@ -35,25 +35,17 @@ const PostsPage = () => {
             </div>
           )}
           <div className='min-h-full grid md:grid-cols-2 gap-x-8 gap-y-4 '>
-            {posts.map((item) => (
+            {posts.map((post) => (
               <PostCard
-                id={item._id}
-                imgUrl={item.img}
-                title={item.title}
-                date={item.createdAt}
-                url='/'
-                content={item.content}
+                key={post._id}
+                post={post}
                 admin={status === "authenticated"}
               />
             ))}
           </div>
         </div>
       )}
-      <NewPostModal
-        isOpened={isOpened}
-        onClose={() => setIsOpened(false)}
-        callback={addPosts}
-      />
+      <NewPostModal isOpened={isOpened} onClose={() => setIsOpened(false)} />
     </div>
   );
 };

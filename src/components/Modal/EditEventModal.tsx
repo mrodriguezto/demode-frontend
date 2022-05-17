@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useFormik } from "formik";
 
 import demodeApi from "../../api/axios";
@@ -7,52 +7,37 @@ import { Button } from "../Button";
 import { TextArea, TextInput } from "../Input";
 import { Spinner } from "../Spinner";
 import { Event } from "../../types/dataTypes";
-import { useAppDispatch } from "../../app/hooks";
-import { updateEvent } from "../../feature/eventsSlice";
+import { useAppDispatch } from "../../store/hooks";
+import { updateEvent } from "../../store/slices/events/eventsSlice";
 
 type Props = {
-  id: string;
   isOpened: boolean;
   onClose: () => void;
-  initialValues: {
-    title: string;
-    description: string;
-    place: string;
-    starts_at: string;
-    url: string;
-  };
+  event: Event;
 };
 
-export const EditEventModal = ({
-  id,
-  initialValues,
-  isOpened,
-  onClose,
-}: Props) => {
+export const EditEventModal = ({ event, isOpened, onClose }: Props) => {
   const [isSending, setIsSending] = useState(false);
   const dispatch = useAppDispatch();
 
-  const { values, handleChange, handleSubmit, setValues } = useFormik({
-    initialValues,
+  const { values, handleChange, handleSubmit } = useFormik({
+    initialValues: {
+      title: event.title,
+      place: event.place,
+      description: event.description,
+      starts_at: event.starts_at,
+      url: event.url,
+    },
     onSubmit: () => editEvent(),
   });
 
   const editEvent = () => {
     setIsSending(true);
-    demodeApi
-      .put<Event>(`/events/${id}/edit`, {
-        title: values.title,
-        description: values.description,
-        place: values.place,
-        starts_at: values.starts_at,
-        url: values.url,
-      })
-      .then((res) => {
-        dispatch(updateEvent(res.data));
-        setValues(initialValues);
-        setIsSending(false);
-        onClose();
-      });
+    demodeApi.put<Event>(`/events/${event._id}/edit`, values).then((res) => {
+      dispatch(updateEvent(res.data));
+      setIsSending(false);
+      onClose();
+    });
   };
 
   return (

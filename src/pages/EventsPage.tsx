@@ -32,14 +32,10 @@ const EventsPage = () => {
             </div>
           )}
           <div className='min-h-full grid md:grid-cols-2 gap-x-8 gap-y-4 '>
-            {events.map((item) => (
+            {events.map((event) => (
               <EventCard
-                id={item._id}
-                url={item.url}
-                title={item.title}
-                starts_at={item.starts_at}
-                description={item.description}
-                place={item.place}
+                key={event._id}
+                event={event}
                 admin={status === "authenticated"}
               />
             ))}

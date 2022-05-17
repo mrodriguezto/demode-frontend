@@ -6,43 +6,39 @@ import { Spinner } from "../Spinner";
 import { Modal } from "./Modal";
 import { Button } from "../Button";
 import { TextArea, TextInput } from "../Input";
+import { useAppDispatch } from "../../store/hooks";
+import { updatePost } from "../../store/slices/posts";
+import { Post } from "../../types/dataTypes";
 
 type Props = {
-  id: string;
+  post: Post;
   isOpened: boolean;
   onClose: () => void;
-  initialValues: {
-    title: string;
-    content: string;
-  };
 };
 
-export const EditPostModal = ({
-  id,
-  initialValues,
-  isOpened,
-  onClose,
-}: Props) => {
+export const EditPostModal = ({ post, isOpened, onClose }: Props) => {
   const [isSending, setIsSending] = useState(false);
+  const dispatch = useAppDispatch();
 
-  const { values, handleChange, handleSubmit, setValues } = useFormik({
-    initialValues,
-    onSubmit: () => updatePost(),
+  const { values, handleChange, handleSubmit } = useFormik({
+    initialValues: {
+      title: post.title,
+      content: post.content,
+    },
+    onSubmit: () => editPost(),
   });
 
-  const updatePost = () => {
+  const editPost = () => {
     setIsSending(true);
-    demodeApi
-      .put(`/posts/${id}/edit`, {
-        title: values.title,
-        content: values.content,
-      })
-      .then((res) => {
-        window.location.reload();
+    console.log(values);
 
-        setValues(initialValues);
-        setIsSending(false);
-      });
+    demodeApi.put<Post>(`/posts/${post._id}/edit`, values).then((res) => {
+      console.log(res.data);
+
+      dispatch(updatePost(res.data));
+      setIsSending(false);
+      onClose();
+    });
   };
 
   return (

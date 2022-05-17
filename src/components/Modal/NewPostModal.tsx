@@ -8,6 +8,8 @@ import { Modal } from "./Modal";
 import { TextArea, TextInput } from "../Input";
 import demodeApi from "../../api/axios";
 import useStorage from "../../hooks/useStorage";
+import { useAppDispatch } from "../../store/hooks";
+import { addPost } from "../../store/slices/posts";
 
 const initialValues = {
   title: "",
@@ -15,14 +17,14 @@ const initialValues = {
 };
 
 type Props = {
-  callback: (data: any) => void;
   isOpened: boolean;
   onClose: () => void;
 };
 
-export const NewPostModal = ({ callback, isOpened, onClose }: Props) => {
-  const { registerData, isSending } = useStorage("posts");
+export const NewPostModal = ({ isOpened, onClose }: Props) => {
   const [img, setImg] = useState<File>();
+  const { registerData, isSending } = useStorage("posts");
+  const dispatch = useAppDispatch();
 
   const { values, handleChange, handleSubmit, setValues } = useFormik({
     initialValues,
@@ -44,10 +46,9 @@ export const NewPostModal = ({ callback, isOpened, onClose }: Props) => {
       })
       .then((res) => {
         toast.success("Artículo registrado");
-
+        dispatch(addPost(res.data));
         setValues(initialValues);
         setImg(undefined);
-        callback(res.data);
       });
   };
 
