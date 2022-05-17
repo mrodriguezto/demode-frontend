@@ -8,7 +8,7 @@ export const store = configureStore({
     events: eventsSlice,
     posts: postsSlice,
     products: productsSlice,
-  }, // TODO: Add posts, products, events reducers
+  },
 });
 
 export type RootState = ReturnType<typeof store.getState>;

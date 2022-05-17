@@ -38,15 +38,8 @@ const LandingPage = () => {
           <PageTitle title='Eventos' />
           <section className='text-white container mx-auto max-w-5xl px-6 md:px-12 flex flex-col items-center mt-8 mb-16'>
             <div className='min-h-full grid md:grid-cols-2 gap-x-8 gap-y-4 container lg:max-w-5xl mx-auto px-0 sm:px-8 py-10'>
-              {previewData?.events.map((item) => (
-                <EventCard
-                  id={item._id}
-                  url={item.url}
-                  title={item.title}
-                  starts_at={item.starts_at}
-                  description={item.description}
-                  place={item.place}
-                />
+              {previewData?.events.map((event) => (
+                <EventCard event={event} />
               ))}
             </div>
             <Link to='/events'>
@@ -58,15 +51,8 @@ const LandingPage = () => {
           <PageTitle title='Noticias' />
           <section className='text-white container mx-auto max-w-5xl px-6 md:px-12 flex flex-col items-center mt-8 mb-16'>
             <div className='min-h-full grid md:grid-cols-2 gap-x-8 gap-y-4 container lg:max-w-5xl mx-auto px-0 sm:px-8 py-10'>
-              {previewData?.posts.map((item) => (
-                <PostCard
-                  id={item._id}
-                  imgUrl={item.img}
-                  title={item.title}
-                  date={item.createdAt}
-                  url='/'
-                  content={item.content}
-                />
+              {previewData?.posts.map((post) => (
+                <PostCard post={post} />
               ))}
             </div>
             <Link to='/posts'>
@@ -78,15 +64,8 @@ const LandingPage = () => {
           <PageTitle title='Productos' />
           <section className='text-white container mx-auto max-w-5xl px-6 md:px-12 flex flex-col items-center mt-8 mb-16'>
             <div className='min-h-full grid md:grid-cols-2 gap-x-8 gap-y-4 container lg:max-w-5xl mx-auto px-0 sm:px-8 py-10'>
-              {previewData?.products.map((item) => (
-                <ProductCard
-                  id={item._id}
-                  url={item.url}
-                  title={item.title}
-                  categories={item.categories}
-                  description={item.description}
-                  img={item.img}
-                />
+              {previewData?.products.map((product) => (
+                <ProductCard product={product} />
               ))}
             </div>
             <Link to='/products'>

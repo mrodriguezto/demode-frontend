@@ -19,6 +19,7 @@ const useEvents = () => {
       const res = await demodeApi.get<Event[]>("/events");
       setIsLoading(false);
       dispatch(initializeEvents(res.data));
+      console.log(res.data);
     } catch (error) {
       toast.error("No se lograron obtener los datos");
     }
