@@ -2,9 +2,12 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import demodeApi from "../api/axios";
 import { Product } from "../types/dataTypes";
+import { useAppSelector, useAppDispatch } from "../store/hooks";
+import { initializeProducts } from "../store/slices/products";
 
 const useProducts = () => {
-  const [products, setProducts] = useState<Product[]>([]);
+  const products = useAppSelector((state) => state.products.value);
+  const dispatch = useAppDispatch();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -15,7 +18,7 @@ const useProducts = () => {
     try {
       const res = await demodeApi.get<Product[]>("/products");
       setIsLoading(false);
-      setProducts(res.data);
+      dispatch(initializeProducts(res.data));
     } catch (error) {
       toast.error("No se lograron obtener los datos");
     }

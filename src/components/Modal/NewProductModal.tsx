@@ -8,6 +8,8 @@ import { Spinner } from "../Spinner";
 import { Modal } from "./Modal";
 import { TextArea, TextInput } from "../Input";
 import useStorage from "../../hooks/useStorage";
+import { useAppDispatch } from "../../store/hooks";
+import { addProduct } from "../../store/slices/products";
 
 const initialValues = {
   title: "",
@@ -24,6 +26,7 @@ type Props = {
 export const NewProductModal = ({ isOpened, onClose }: Props) => {
   const { registerData, isSending } = useStorage("products");
   const [img, setImg] = useState<File>();
+  const dispatch = useAppDispatch();
 
   const { values, handleChange, handleSubmit, setValues } = useFormik({
     initialValues,
@@ -50,7 +53,7 @@ export const NewProductModal = ({ isOpened, onClose }: Props) => {
 
         setValues(initialValues);
         setImg(undefined);
-        // TODO: dispatch new product
+        dispatch(addProduct(res.data));
       });
   };
 

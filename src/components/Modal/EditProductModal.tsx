@@ -6,48 +6,37 @@ import { Button } from "../Button";
 import { Spinner } from "../Spinner";
 import { Modal } from "./Modal";
 import { TextInput, TextArea } from "../Input";
+import { Product } from "../../types/dataTypes";
+import { useAppDispatch } from "../../store/hooks";
+import { updateProduct } from "../../store/slices/products";
 
 type Props = {
-  id: string;
   isOpened: boolean;
   onClose: () => void;
-  initialValues: {
-    title: string;
-    description: string;
-    categories: string;
-    url: string;
-  };
+  product: Product;
 };
 
-export const EditProductModal = ({
-  id,
-  initialValues,
-  isOpened,
-  onClose,
-}: Props) => {
+export const EditProductModal = ({ product, isOpened, onClose }: Props) => {
   const [isSending, setIsSending] = useState(false);
+  const dispatch = useAppDispatch();
 
-  const { values, handleChange, handleSubmit, setValues } = useFormik({
-    initialValues,
-    onSubmit: () => updateProduct(),
+  const { values, handleChange, handleSubmit } = useFormik({
+    initialValues: {
+      title: product.title,
+      description: product.description,
+      categories: product.categories,
+      url: product.url,
+    },
+    onSubmit: () => editProduct(),
   });
 
-  const updateProduct = () => {
+  const editProduct = () => {
     setIsSending(true);
-    demodeApi
-      .put(`/products/${id}/edit`, {
-        title: values.title,
-        description: values.description,
-        categories: values.categories,
-        url: values.url,
-      })
-      .then((res) => {
-        window.location.reload();
-        // TODO: dispatch update
-        setValues(initialValues);
-        setIsSending(false);
-        onClose();
-      });
+    demodeApi.put(`/products/${product._id}/edit`, values).then((res) => {
+      dispatch(updateProduct(res.data));
+      setIsSending(false);
+      onClose();
+    });
   };
 
   return (

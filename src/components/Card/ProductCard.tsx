@@ -7,33 +7,24 @@ import { Card } from "./Card";
 import { Button } from "../Button";
 import { CardMenu } from "./CardMenu";
 import { EditProductModal } from "../Modal";
+import { Product } from "../../types/dataTypes";
+import { deleteProduct } from "../../store/slices/products";
+import { useAppDispatch } from "../../store/hooks";
 
 type ProductCardProps = {
-  id: string;
-  title: string;
-  description: string;
-  img: string;
-  url: string;
-  categories: string;
+  product: Product;
   admin?: boolean;
 };
 
-export const ProductCard = ({
-  id,
-  categories,
-  description,
-  img,
-  title,
-  url,
-  admin = false,
-}: ProductCardProps) => {
+export const ProductCard = ({ product, admin = false }: ProductCardProps) => {
   const [menuIsActive, setMenuIsActive] = useState(false);
   const [isOpened, setIsOpened] = useState(false);
+  const dispatch = useAppDispatch();
 
   const handleDelete = async () => {
     try {
-      await demodeApi.delete(`/products/${id}/delete`);
-      window.location.reload();
+      await demodeApi.delete(`/products/${product._id}/delete`);
+      dispatch(deleteProduct(product._id));
     } catch (error) {
       toast.error("No se logró eliminar el item");
     }
@@ -44,7 +35,11 @@ export const ProductCard = ({
   return (
     <Card className='flex flex-col min-h-[320px]' fullsize noPadding>
       <div className='relative'>
-        <img src={img} alt={title} className='max-h-44 w-full object-cover' />
+        <img
+          src={product.img}
+          alt={product.title}
+          className='max-h-44 w-full object-cover'
+        />
         {admin && (
           <>
             <Button
@@ -68,11 +63,13 @@ export const ProductCard = ({
       </div>
       <div className='px-6 py-4 text-center flex-1'>
         <h3 className='text-white text-xl font-title font-semibold uppercase'>
-          {title}
+          {product.title}
         </h3>
-        <small className='text-gray-400 text-sm font-body'>{categories}</small>
-        <p className='text-gray-200 font-body'>{description}</p>
-        <a href={url} target='_blank'>
+        <small className='text-gray-400 text-sm font-body'>
+          {product.categories}
+        </small>
+        <p className='text-gray-200 font-body'>{product.description}</p>
+        <a href={product.url} target='_blank'>
           <Button
             color='primary'
             size='sm'
@@ -83,15 +80,9 @@ export const ProductCard = ({
         </a>
       </div>
       <EditProductModal
-        id={id}
         isOpened={isOpened}
         onClose={() => setIsOpened(false)}
-        initialValues={{
-          categories,
-          description,
-          title,
-          url,
-        }}
+        product={product}
       />
     </Card>
   );

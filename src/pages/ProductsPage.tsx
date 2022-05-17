@@ -32,14 +32,10 @@ const ProductsPage = () => {
             </div>
           )}
           <div className='min-h-full grid md:grid-cols-2 gap-x-8 gap-y-4 '>
-            {products.map((item) => (
+            {products.map((product) => (
               <ProductCard
-                id={item._id}
-                url={item.url}
-                title={item.title}
-                categories={item.categories}
-                description={item.description}
-                img={item.img}
+                key={product._id}
+                product={product}
                 admin={status === "authenticated"}
               />
             ))}

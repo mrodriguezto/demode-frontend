@@ -30,11 +30,8 @@ export const EditPostModal = ({ post, isOpened, onClose }: Props) => {
 
   const editPost = () => {
     setIsSending(true);
-    console.log(values);
 
     demodeApi.put<Post>(`/posts/${post._id}/edit`, values).then((res) => {
-      console.log(res.data);
-
       dispatch(updatePost(res.data));
       setIsSending(false);
       onClose();
