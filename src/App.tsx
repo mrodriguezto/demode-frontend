@@ -19,7 +19,7 @@ const App = () => {
   return (
     <AppState>
       <Header />
-      <div id='content'>
+      <div className='pb-14' id='content'>
         <Routes />
       </div>
       <Footer />
