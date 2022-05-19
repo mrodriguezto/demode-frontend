@@ -41,6 +41,12 @@ export type Post = {
   __v: number;
 };
 
+export type PostData = {
+  title: string;
+  content: string;
+  img: string;
+};
+
 export type Author = {
   _id: string;
   firstname: string;

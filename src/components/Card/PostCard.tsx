@@ -3,14 +3,12 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import { RiMore2Fill } from "react-icons/ri";
 
-import demodeApi from "../../api/axios";
 import { Button } from "../Button";
 import { EditPostModal } from "../Modal";
 import { CardMenu } from "./CardMenu";
 import { WideCard } from "./WideCard";
-import { useAppDispatch } from "../../store/hooks";
-import { deletePost } from "../../store/slices/posts";
 import { Post } from "../../types/dataTypes";
+import { useDeletePostMutation } from "../../store/services/posts";
 
 type PostCardProps = {
   post: Post;
@@ -20,20 +18,16 @@ type PostCardProps = {
 export const PostCard = ({ post, admin = false }: PostCardProps) => {
   const [menuIsActive, setMenuIsActive] = useState(false);
   const [isOpened, setIsOpened] = useState(false);
-  const dispatch = useAppDispatch();
+  const [deletePost] = useDeletePostMutation();
 
   const formatedDate = dayjs(post.createdAt)
     .locale("es")
     .format("ddd DD MMM [de] YYYY - HH:mm");
 
   const handleDelete = async () => {
-    try {
-      await demodeApi.delete(`/posts/${post._id}/delete`);
-      dispatch(deletePost(post._id));
-      setMenuIsActive(false);
-    } catch (error) {
-      toast.error("No se logró eliminar el item");
-    }
+    deletePost(post._id)
+      .then(() => toast.success("Publicación eliminada"))
+      .catch(() => toast.error("No se logró eliminar la publicación"));
   };
 
   return (

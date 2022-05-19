@@ -8,8 +8,7 @@ import { Modal } from "./Modal";
 import { TextArea, TextInput } from "../Input";
 import demodeApi from "../../api/axios";
 import useStorage from "../../hooks/useStorage";
-import { useAppDispatch } from "../../store/hooks";
-import { addPost } from "../../store/slices/posts";
+import { useAddPostMutation } from "../../store/services/posts";
 
 const initialValues = {
   title: "",
@@ -24,7 +23,7 @@ type Props = {
 export const NewPostModal = ({ isOpened, onClose }: Props) => {
   const [img, setImg] = useState<File>();
   const { registerData, isSending } = useStorage("posts");
-  const dispatch = useAppDispatch();
+  const [addPost] = useAddPostMutation();
 
   const { values, handleChange, handleSubmit, setValues } = useFormik({
     initialValues,
@@ -38,18 +37,12 @@ export const NewPostModal = ({ isOpened, onClose }: Props) => {
   });
 
   const newPost = (url: string) => {
-    demodeApi
-      .post("/posts/new", {
-        title: values.title,
-        content: values.content,
-        img: url,
-      })
-      .then((res) => {
-        toast.success("Artículo registrado");
-        dispatch(addPost(res.data));
+    addPost({ ...values, img: url })
+      .then(() => {
+        toast.success("Publicación registrada");
         setValues(initialValues);
-        setImg(undefined);
-      });
+      })
+      .catch(() => toast.error("No se logró registrar la publiación"));
   };
 
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {

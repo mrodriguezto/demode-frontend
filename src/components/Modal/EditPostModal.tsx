@@ -9,6 +9,8 @@ import { TextArea, TextInput } from "../Input";
 import { useAppDispatch } from "../../store/hooks";
 import { updatePost } from "../../store/slices/posts";
 import { Post } from "../../types/dataTypes";
+import { useUpdatePostMutation } from "../../store/services/posts";
+import toast from "react-hot-toast";
 
 type Props = {
   post: Post;
@@ -17,8 +19,7 @@ type Props = {
 };
 
 export const EditPostModal = ({ post, isOpened, onClose }: Props) => {
-  const [isSending, setIsSending] = useState(false);
-  const dispatch = useAppDispatch();
+  const [updatePost, { isLoading }] = useUpdatePostMutation();
 
   const { values, handleChange, handleSubmit } = useFormik({
     initialValues: {
@@ -29,13 +30,12 @@ export const EditPostModal = ({ post, isOpened, onClose }: Props) => {
   });
 
   const editPost = () => {
-    setIsSending(true);
-
-    demodeApi.put<Post>(`/posts/${post._id}/edit`, values).then((res) => {
-      dispatch(updatePost(res.data));
-      setIsSending(false);
-      onClose();
-    });
+    updatePost({ id: post._id, body: values })
+      .then(() => {
+        toast.success("Publicación actualizada");
+        onClose();
+      })
+      .catch(() => toast.error("No se logró actualizar la publicación"));
   };
 
   return (
@@ -64,9 +64,9 @@ export const EditPostModal = ({ post, isOpened, onClose }: Props) => {
             className='px-9 mt-3 shadow-md relative'
             type='submit'
             size='sm'
-            disabled={isSending}
+            disabled={isLoading}
           >
-            {isSending ? (
+            {isLoading ? (
               <div className='w-full h-full flex gap-x-2'>
                 <Spinner size='inline' color='lightGray' />
 

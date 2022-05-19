@@ -7,8 +7,7 @@ import { PostCard } from "../components/Card";
 import { AuthContext } from "../context/AuthContext";
 import { Button } from "../components/Button";
 import { NewPostModal } from "../components/Modal";
-
-import { useGetPostsQuery } from "../api/demodeApi";
+import { useGetPostsQuery } from "../store/services/posts";
 
 const PostsPage = () => {
   const [isOpened, setIsOpened] = useState(false);

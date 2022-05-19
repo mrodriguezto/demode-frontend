@@ -14,11 +14,7 @@ export const demodeApi = createApi({
     getProducts: builder.query<Product[], void>({
       query: () => "/products",
     }),
-    getPosts: builder.query<Post[], void>({
-      query: () => "/posts",
-    }),
   }),
 });
 
-export const { useGetPreviewDataQuery, useGetProductsQuery, useGetPostsQuery } =
-  demodeApi;
+export const { useGetPreviewDataQuery, useGetProductsQuery } = demodeApi;
