@@ -1,14 +1,12 @@
-import { useState, useEffect } from "react";
 import { useFormik } from "formik";
 
-import demodeApi from "../../api/axios";
 import { Modal } from "./Modal";
 import { Button } from "../Button";
 import { TextArea, TextInput } from "../Input";
 import { Spinner } from "../Spinner";
 import { Event } from "../../types/dataTypes";
-import { useAppDispatch } from "../../store/hooks";
-import { updateEvent } from "../../store/slices/events/eventsSlice";
+import { useUpdateEventMutation } from "../../store/services/events";
+import toast from "react-hot-toast";
 
 type Props = {
   isOpened: boolean;
@@ -17,8 +15,7 @@ type Props = {
 };
 
 export const EditEventModal = ({ event, isOpened, onClose }: Props) => {
-  const [isSending, setIsSending] = useState(false);
-  const dispatch = useAppDispatch();
+  const [updateEvent, { isLoading }] = useUpdateEventMutation();
 
   const { values, handleChange, handleSubmit } = useFormik({
     initialValues: {
@@ -32,12 +29,12 @@ export const EditEventModal = ({ event, isOpened, onClose }: Props) => {
   });
 
   const editEvent = () => {
-    setIsSending(true);
-    demodeApi.put<Event>(`/events/${event._id}/edit`, values).then((res) => {
-      dispatch(updateEvent(res.data));
-      setIsSending(false);
-      onClose();
-    });
+    updateEvent({ id: event._id, body: values })
+      .then(() => {
+        toast.success("Evento actualizado");
+        onClose();
+      })
+      .catch(() => toast.error("No se logró actualizar el ítem"));
   };
 
   return (
@@ -92,9 +89,9 @@ export const EditEventModal = ({ event, isOpened, onClose }: Props) => {
             className='px-9 mt-3 shadow-md relative'
             type='submit'
             size='sm'
-            disabled={isSending}
+            disabled={isLoading}
           >
-            {isSending ? (
+            {isLoading ? (
               <div className='w-full h-full flex gap-x-2'>
                 <Spinner size='inline' color='lightGray' />
 

@@ -64,6 +64,14 @@ export type Event = {
   __v: number;
 };
 
+export type EventData = {
+  title: string;
+  description: string;
+  place: string;
+  url: string;
+  starts_at: string;
+};
+
 export type Product = {
   _id: string;
   title: string;

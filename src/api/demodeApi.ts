@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { Event, Post, PreviewData, Product } from "../types/dataTypes";
+import { Post, PreviewData, Product } from "../types/dataTypes";
 
 export const demodeApi = createApi({
   reducerPath: "demodeApi",
@@ -7,11 +7,9 @@ export const demodeApi = createApi({
     baseUrl: import.meta.env.VITE_API_BASE_URL || "http://localhost:5000",
   }),
   endpoints: (builder) => ({
+    // get data queries
     getPreviewData: builder.query<PreviewData, void>({
       query: () => "/preview",
-    }),
-    getEvents: builder.query<Event[], void>({
-      query: () => "/events",
     }),
     getProducts: builder.query<Product[], void>({
       query: () => "/products",
@@ -22,9 +20,5 @@ export const demodeApi = createApi({
   }),
 });
 
-export const {
-  useGetPreviewDataQuery,
-  useGetEventsQuery,
-  useGetProductsQuery,
-  useGetPostsQuery,
-} = demodeApi;
+export const { useGetPreviewDataQuery, useGetProductsQuery, useGetPostsQuery } =
+  demodeApi;

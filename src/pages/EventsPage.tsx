@@ -5,7 +5,7 @@ import { PageTitle } from "../components/Title";
 import { Spinner } from "../components/Spinner";
 import { AuthContext } from "../context/AuthContext";
 import { NewEventModal } from "../components/Modal";
-import { useGetEventsQuery } from "../api/demodeApi";
+import { useGetEventsQuery } from "../store/services/events";
 
 const EventsPage = () => {
   const [isOpened, setIsOpened] = useState(false);

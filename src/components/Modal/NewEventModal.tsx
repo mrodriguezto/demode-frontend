@@ -1,14 +1,11 @@
-import { useState } from "react";
 import { useFormik } from "formik";
 import toast from "react-hot-toast";
 
-import demodeApi from "../../api/axios";
 import { Button } from "../Button";
 import { Spinner } from "../Spinner";
 import { Modal } from "./Modal";
 import { TextArea, TextInput } from "../Input";
-import { useAppDispatch } from "../../store/hooks";
-import { addEvent } from "../../store/slices/events/eventsSlice";
+import { useAddEventMutation } from "../../store/services/events";
 
 const initialValues = {
   title: "",
@@ -24,8 +21,7 @@ type Props = {
 };
 
 export const NewEventModal = ({ isOpened, onClose }: Props) => {
-  const [isSending, setIsSending] = useState(false);
-  const dispatch = useAppDispatch();
+  const [addEvent, { isLoading }] = useAddEventMutation();
 
   const { values, handleChange, handleSubmit, setValues } = useFormik({
     initialValues,
@@ -33,23 +29,12 @@ export const NewEventModal = ({ isOpened, onClose }: Props) => {
   });
 
   const registerEvent = () => {
-    setIsSending(true);
-    demodeApi
-      .post("/events/new", {
-        title: values.title,
-        description: values.description,
-        place: values.place,
-        starts_at: values.starts_at,
-        url: values.url,
-      })
+    addEvent(values)
       .then((res) => {
-        toast.success("Producto registrado");
-
+        toast.success("Evento Registrado");
         setValues(initialValues);
-
-        setIsSending(false);
-        dispatch(addEvent(res.data));
-      });
+      })
+      .catch(() => toast.error("No se logró registrar el ítem"));
   };
 
   return (
@@ -104,9 +89,9 @@ export const NewEventModal = ({ isOpened, onClose }: Props) => {
             className='px-9 mt-3 shadow-md relative'
             type='submit'
             size='sm'
-            disabled={isSending}
+            disabled={isLoading}
           >
-            {isSending ? (
+            {isLoading ? (
               <div className='w-full h-full flex gap-x-2'>
                 <Spinner size='inline' color='lightGray' />
 

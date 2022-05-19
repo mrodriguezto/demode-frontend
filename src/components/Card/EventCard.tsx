@@ -1,16 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import toast from "react-hot-toast";
 import { RiMore2Fill } from "react-icons/ri";
 import dayjs from "dayjs";
 
-import demodeApi from "../../api/axios";
 import { Button } from "../Button";
 import { EditEventModal } from "../Modal";
 import { CardMenu } from "./CardMenu";
 import { WideCard } from "./WideCard";
-import { useAppDispatch } from "../../store/hooks";
-import { deleteEvent } from "../../store/slices/events/eventsSlice";
 import { Event } from "../../types/dataTypes";
+import { useDeleteEventMutation } from "../../store/services/events";
 
 type EventCardProps = {
   event: Event;
@@ -20,22 +18,17 @@ type EventCardProps = {
 export const EventCard = ({ event, admin = false }: EventCardProps) => {
   const [menuIsActive, setMenuIsActive] = useState(false);
   const [isOpened, setIsOpened] = useState(false);
-  const dispatch = useAppDispatch();
+  const [deleteEvent] = useDeleteEventMutation();
 
   const formatedDate = dayjs(event.starts_at)
     .locale("es")
     .format("ddd DD MMM [de] YYYY - HH:mm");
 
   const handleDelete = async () => {
-    try {
-      await demodeApi.delete(`/events/${event._id}/delete`);
-      dispatch(deleteEvent(event._id));
-    } catch (error) {
-      toast.error("No se logró eliminar el item");
-    }
+    deleteEvent(event._id)
+      .then(() => toast.success("Evento eliminado"))
+      .catch(() => toast.error("No se logró eliminar el evento"));
   };
-
-  const handleEdit = () => setIsOpened(true);
 
   return (
     <WideCard>
@@ -55,7 +48,7 @@ export const EventCard = ({ event, admin = false }: EventCardProps) => {
               isOpened={menuIsActive}
               handleClose={() => setMenuIsActive(false)}
               onDelete={handleDelete}
-              onEdit={handleEdit}
+              onEdit={() => setIsOpened(true)}
             />
           </>
         )}
