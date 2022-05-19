@@ -5,10 +5,10 @@ import { MediaPreview } from "../components/MediaPreview";
 import { PageTitle } from "../components/Title";
 import { ProductCard, PostCard, EventCard } from "../components/Card";
 import { Spinner } from "../components/Spinner";
-import { useGetPreviewDataQuery } from "../api/demodeApi";
+import usePreviewData from "../hooks/usePreviewData";
 
 const LandingPage = () => {
-  const { data: previewData, isLoading } = useGetPreviewDataQuery();
+  const { previewData, isLoading } = usePreviewData();
 
   return (
     <main>
