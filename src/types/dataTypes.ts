@@ -91,6 +91,14 @@ export type Product = {
   __v: number;
 };
 
+export type ProductData = {
+  title: string;
+  description: string;
+  img: string;
+  url: string;
+  categories: string;
+};
+
 export type ContactResponse = {
   name: string;
   email: string;

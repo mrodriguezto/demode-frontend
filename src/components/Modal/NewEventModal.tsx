@@ -30,7 +30,7 @@ export const NewEventModal = ({ isOpened, onClose }: Props) => {
 
   const registerEvent = () => {
     addEvent(values)
-      .then((res) => {
+      .then(() => {
         toast.success("Evento Registrado");
         setValues(initialValues);
       })

@@ -1,14 +1,12 @@
-import { useState } from "react";
 import { useFormik } from "formik";
+import toast from "react-hot-toast";
 
-import demodeApi from "../../api/axios";
 import { Button } from "../Button";
 import { Spinner } from "../Spinner";
 import { Modal } from "./Modal";
 import { TextInput, TextArea } from "../Input";
 import { Product } from "../../types/dataTypes";
-import { useAppDispatch } from "../../store/hooks";
-import { updateProduct } from "../../store/slices/products";
+import { useUpdateProductMutation } from "../../store/services";
 
 type Props = {
   isOpened: boolean;
@@ -17,8 +15,7 @@ type Props = {
 };
 
 export const EditProductModal = ({ product, isOpened, onClose }: Props) => {
-  const [isSending, setIsSending] = useState(false);
-  const dispatch = useAppDispatch();
+  const [updateProduct, { isLoading }] = useUpdateProductMutation();
 
   const { values, handleChange, handleSubmit } = useFormik({
     initialValues: {
@@ -31,12 +28,12 @@ export const EditProductModal = ({ product, isOpened, onClose }: Props) => {
   });
 
   const editProduct = () => {
-    setIsSending(true);
-    demodeApi.put(`/products/${product._id}/edit`, values).then((res) => {
-      dispatch(updateProduct(res.data));
-      setIsSending(false);
-      onClose();
-    });
+    updateProduct({ id: product._id, body: values })
+      .then(() => {
+        toast.success("Producto actualizado");
+        onClose();
+      })
+      .catch(() => toast.error("No se logró actualizar el producto"));
   };
 
   return (
@@ -81,9 +78,9 @@ export const EditProductModal = ({ product, isOpened, onClose }: Props) => {
             className='px-9 mt-3 shadow-md relative'
             type='submit'
             size='sm'
-            disabled={isSending}
+            disabled={isLoading}
           >
-            {isSending ? (
+            {isLoading ? (
               <div className='w-full h-full flex gap-x-2'>
                 <Spinner size='inline' color='lightGray' />
 

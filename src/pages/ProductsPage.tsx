@@ -6,12 +6,12 @@ import { ProductCard } from "../components/Card";
 import { Spinner } from "../components/Spinner";
 import { AuthContext } from "../context/AuthContext";
 import { NewProductModal } from "../components/Modal";
-import { useGetProductsQuery } from "../api/demodeApi";
+import { useGetProductsQuery } from "../store/services";
 
 const ProductsPage = () => {
   const [isOpened, setIsOpened] = useState(false);
-  const { data: products = [], isLoading } = useGetProductsQuery();
   const { status } = useContext(AuthContext);
+  const { data: products = [], isLoading } = useGetProductsQuery();
 
   return (
     <div className='pt-36 relative'>

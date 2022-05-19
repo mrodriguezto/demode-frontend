@@ -1,22 +1,20 @@
 import { configureStore } from "@reduxjs/toolkit";
-import productsSlice from "./slices/products";
 import { demodeApi } from "../api/demodeApi";
-import { eventsApi } from "./services/events";
-import { postsApi } from "./services/posts";
+import { eventsApi, postsApi, productsApi } from "./services";
 
 export const store = configureStore({
   reducer: {
-    products: productsSlice,
-
     [demodeApi.reducerPath]: demodeApi.reducer,
     [eventsApi.reducerPath]: eventsApi.reducer,
     [postsApi.reducerPath]: postsApi.reducer,
+    [productsApi.reducerPath]: productsApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(
       demodeApi.middleware,
       eventsApi.middleware,
-      postsApi.middleware
+      postsApi.middleware,
+      productsApi.middleware
     ),
 });
 

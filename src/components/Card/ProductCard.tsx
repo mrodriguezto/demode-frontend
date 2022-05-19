@@ -2,14 +2,12 @@ import { useState } from "react";
 import { RiMore2Fill } from "react-icons/ri";
 import toast from "react-hot-toast";
 
-import demodeApi from "../../api/axios";
 import { Card } from "./Card";
 import { Button } from "../Button";
 import { CardMenu } from "./CardMenu";
 import { EditProductModal } from "../Modal";
 import { Product } from "../../types/dataTypes";
-import { deleteProduct } from "../../store/slices/products";
-import { useAppDispatch } from "../../store/hooks";
+import { useDeleteProductMutation } from "../../store/services";
 
 type ProductCardProps = {
   product: Product;
@@ -19,18 +17,13 @@ type ProductCardProps = {
 export const ProductCard = ({ product, admin = false }: ProductCardProps) => {
   const [menuIsActive, setMenuIsActive] = useState(false);
   const [isOpened, setIsOpened] = useState(false);
-  const dispatch = useAppDispatch();
+  const [deleteProduct] = useDeleteProductMutation();
 
   const handleDelete = async () => {
-    try {
-      await demodeApi.delete(`/products/${product._id}/delete`);
-      dispatch(deleteProduct(product._id));
-    } catch (error) {
-      toast.error("No se logró eliminar el item");
-    }
+    deleteProduct(product._id)
+      .then(() => toast.success("Producto eliminado"))
+      .catch(() => toast.error("No se logró eliminar el producto"));
   };
-
-  const handleEdit = () => setIsOpened(true);
 
   return (
     <Card className='flex flex-col min-h-[320px]' fullsize noPadding>
@@ -55,7 +48,7 @@ export const ProductCard = ({ product, admin = false }: ProductCardProps) => {
                 onDelete={handleDelete}
                 isOpened={menuIsActive}
                 handleClose={() => setMenuIsActive(false)}
-                onEdit={handleEdit}
+                onEdit={() => setIsOpened(true)}
               />
             )}
           </>

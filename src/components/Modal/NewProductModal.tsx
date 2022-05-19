@@ -2,14 +2,12 @@ import { useState } from "react";
 import { useFormik } from "formik";
 import toast from "react-hot-toast";
 
-import demodeApi from "../../api/axios";
 import { Button } from "../Button";
 import { Spinner } from "../Spinner";
 import { Modal } from "./Modal";
 import { TextArea, TextInput } from "../Input";
 import useStorage from "../../hooks/useStorage";
-import { useAppDispatch } from "../../store/hooks";
-import { addProduct } from "../../store/slices/products";
+import { useAddProductMutation } from "../../store/services";
 
 const initialValues = {
   title: "",
@@ -26,7 +24,7 @@ type Props = {
 export const NewProductModal = ({ isOpened, onClose }: Props) => {
   const { registerData, isSending } = useStorage("products");
   const [img, setImg] = useState<File>();
-  const dispatch = useAppDispatch();
+  const [addProduct] = useAddProductMutation();
 
   const { values, handleChange, handleSubmit, setValues } = useFormik({
     initialValues,
@@ -40,21 +38,12 @@ export const NewProductModal = ({ isOpened, onClose }: Props) => {
   });
 
   const newProduct = (url: string) => {
-    demodeApi
-      .post("/products/new", {
-        title: values.title,
-        description: values.description,
-        categories: values.categories,
-        url: values.url,
-        img: url,
-      })
-      .then((res) => {
-        toast.success("Producto registrado");
-
+    addProduct({ ...values, img: url })
+      .then(() => {
+        toast.success("Producto Registrado");
         setValues(initialValues);
-        setImg(undefined);
-        dispatch(addProduct(res.data));
-      });
+      })
+      .catch(() => toast.error("No se logró registrar el producto"));
   };
 
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
