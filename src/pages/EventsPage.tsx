@@ -15,7 +15,7 @@ const EventsPage = () => {
   return (
     <div className='pt-36'>
       <PageTitle title='Eventos' />
-      <div className='min-h-full container lg:max-w-5xl mx-auto px-0 sm:px-8 py-4'>
+      <div className='min-h-full container lg:max-w-5xl mx-auto px-3 sm:px-8 py-4'>
         {status === "authenticated" && (
           <div className='flex justify-end mb-8'>
             <Button onClick={() => setIsOpened(true)}>

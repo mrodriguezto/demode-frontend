@@ -4,8 +4,8 @@ export const Footer = () => {
   return (
     <footer className='bg-black flex flex-col items-center text-gray-200'>
       <div className='border-t-2 min-w-[100px] mb-4' />
-      <div className='flex flex-col lg:flex-row lg:space-x-24'>
-        <div className='my-3  flex flex-col items-center'>
+      <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-3 place-items-center'>
+        <div className='my-2 flex flex-col items-center'>
           <a href='/about'>
             <h2 className='font-bold text-lg'>QUIÉNES SOMOS</h2>
           </a>
@@ -16,7 +16,7 @@ export const Footer = () => {
             <span>Miembros de la banda</span>
           </a>
         </div>
-        <div className='my-3 flex flex-col items-center'>
+        <div className='my-2 flex flex-col items-center'>
           <a href='/events'>
             <h2 className='font-bold text-lg'>EVENTOS</h2>
           </a>
@@ -27,7 +27,7 @@ export const Footer = () => {
             <span>Conciertos</span>
           </a>
         </div>
-        <div className='my-3  flex flex-col items-center'>
+        <div className='my-2 flex flex-col items-center'>
           <a href='/products'>
             <h2 className='font-bold text-lg'>MERCHANDISE</h2>
           </a>
@@ -38,7 +38,7 @@ export const Footer = () => {
             <span>Nuestra tienda</span>
           </a>
         </div>
-        <div className='my-3  flex flex-col items-center'>
+        <div className='my-2 flex flex-col items-center'>
           <a href='/contact'>
             <h2 className='font-bold text-lg'>CONTACTO</h2>
           </a>

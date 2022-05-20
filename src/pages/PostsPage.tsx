@@ -17,7 +17,7 @@ const PostsPage = () => {
   return (
     <div className='text-white pt-36 min-h-full'>
       <PageTitle title='Noticias' />
-      <div className='min-h-full container lg:max-w-5xl mx-auto px-0 sm:px-8 py-4 mb-10'>
+      <div className='min-h-full container lg:max-w-5xl mx-auto px-3 sm:px-8 py-4 mb-10'>
         {status === "authenticated" && (
           <div className='flex justify-end mb-8'>
             <Button onClick={() => setIsOpened(true)}>

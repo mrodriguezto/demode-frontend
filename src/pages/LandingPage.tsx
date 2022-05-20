@@ -8,7 +8,14 @@ import { Spinner } from "../components/Spinner";
 import usePreviewData from "../hooks/usePreviewData";
 
 const LandingPage = () => {
-  const { previewData, isLoading } = usePreviewData();
+  const {
+    previewData = {
+      events: [],
+      posts: [],
+      products: [],
+    },
+    isLoading,
+  } = usePreviewData();
 
   return (
     <main>
@@ -35,43 +42,55 @@ const LandingPage = () => {
       ) : (
         <>
           {/* Events Section */}
-          <PageTitle title='Eventos' />
-          <section className='text-white container mx-auto max-w-5xl px-6 md:px-12 flex flex-col items-center mt-8 mb-16'>
-            <div className='min-h-full grid md:grid-cols-2 gap-x-8 gap-y-4 container lg:max-w-5xl mx-auto px-0 sm:px-8 py-10'>
-              {previewData?.events.map((event) => (
-                <EventCard event={event} />
-              ))}
-            </div>
-            <Link to='/events'>
-              <Button>Ver más</Button>
-            </Link>
-          </section>
+          {previewData?.events.length > 0 && (
+            <>
+              <PageTitle title='Eventos' />
+              <section className='text-white container mx-auto max-w-5xl px-6 md:px-12 flex flex-col items-center mt-8 mb-16'>
+                <div className='min-h-full grid md:grid-cols-2 gap-x-8 gap-y-4 container lg:max-w-5xl mx-auto px-0 sm:px-8 py-10'>
+                  {previewData?.events.map((event) => (
+                    <EventCard event={event} />
+                  ))}
+                </div>
+                <Link to='/events'>
+                  <Button>Ver más</Button>
+                </Link>
+              </section>
+            </>
+          )}
 
           {/* Post Section */}
-          <PageTitle title='Noticias' />
-          <section className='text-white container mx-auto max-w-5xl px-6 md:px-12 flex flex-col items-center mt-8 mb-16'>
-            <div className='min-h-full grid md:grid-cols-2 gap-x-8 gap-y-4 container lg:max-w-5xl mx-auto px-0 sm:px-8 py-10'>
-              {previewData?.posts.map((post) => (
-                <PostCard post={post} />
-              ))}
-            </div>
-            <Link to='/posts'>
-              <Button>Ver más</Button>
-            </Link>
-          </section>
+          {previewData.posts.length > 0 && (
+            <>
+              <PageTitle title='Noticias' />
+              <section className='text-white container mx-auto max-w-5xl px-6 md:px-12 flex flex-col items-center mt-8 mb-16'>
+                <div className='min-h-full grid md:grid-cols-2 gap-x-8 gap-y-4 container lg:max-w-5xl mx-auto px-0 sm:px-8 py-10'>
+                  {previewData?.posts.map((post) => (
+                    <PostCard post={post} />
+                  ))}
+                </div>
+                <Link to='/posts'>
+                  <Button>Ver más</Button>
+                </Link>
+              </section>
+            </>
+          )}
 
           {/* Products Section */}
-          <PageTitle title='Productos' />
-          <section className='text-white container mx-auto max-w-5xl px-6 md:px-12 flex flex-col items-center mt-8 mb-16'>
-            <div className='min-h-full grid md:grid-cols-2 gap-x-8 gap-y-4 container lg:max-w-5xl mx-auto px-0 sm:px-8 py-10'>
-              {previewData?.products.map((product) => (
-                <ProductCard product={product} />
-              ))}
-            </div>
-            <Link to='/products'>
-              <Button>Ver más</Button>
-            </Link>
-          </section>
+          {previewData.products.length > 0 && (
+            <>
+              <PageTitle title='Productos' />
+              <section className='text-white container mx-auto max-w-5xl px-6 md:px-12 flex flex-col items-center mt-8 mb-16'>
+                <div className='min-h-full grid md:grid-cols-2 gap-x-8 gap-y-4 container lg:max-w-5xl mx-auto px-0 sm:px-8 py-10'>
+                  {previewData?.products.map((product) => (
+                    <ProductCard product={product} />
+                  ))}
+                </div>
+                <Link to='/products'>
+                  <Button>Ver más</Button>
+                </Link>
+              </section>
+            </>
+          )}
         </>
       )}
     </main>

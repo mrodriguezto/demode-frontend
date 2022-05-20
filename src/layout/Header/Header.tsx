@@ -6,6 +6,9 @@ import { Sidebar } from "../Sidebar";
 const navLinks = [
   { path: "/posts", title: "NOTICIAS" },
   { path: "/events", title: "CONCIERTOS" },
+  { path: "/products", title: "PRODUCTOS" },
+  { path: "/about", title: "CONÓCENOS" },
+  { path: "/contact", title: "CONTÁCTANOS" },
 ];
 
 export const Header = () => {
@@ -18,7 +21,7 @@ export const Header = () => {
         <nav className='hidden md:block px-4'>
           <ul className='text-white flex font-semibold text-md px-6'>
             {navLinks.map(({ path, title }, index) => (
-              <NavLink key={index} path={path} title={title} />
+              <NavLink key={index} path={path} title={title} index={index} />
             ))}
           </ul>
         </nav>
@@ -38,11 +41,16 @@ export const Header = () => {
 type NavLinkProps = {
   path: string;
   title: string;
+  index: number;
 };
 
-const NavLink = ({ path, title }: NavLinkProps) => {
+const NavLink = ({ path, title, index }: NavLinkProps) => {
   return (
-    <li className='hover:text-gray-400 mr-5 transition ease-linear duration-150'>
+    <li
+      className={`hover:text-gray-400 mr-5 transition ease-linear duration-150 ${
+        index <= 1 ? "" : index <= 2 ? "hidden lg:block" : "hidden xl:block"
+      }`}
+    >
       <Link to={path}>{title}</Link>
     </li>
   );
