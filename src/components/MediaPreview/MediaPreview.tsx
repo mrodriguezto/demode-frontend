@@ -1,7 +1,7 @@
-import DavidImg from "../../assets/member-david.png";
+import DavidImg from "../../assets/member-david.jpg";
 import DanielImg from "../../assets/member-dan.jpg";
-import JulioImg from "../../assets/member-julio.jpeg";
-import YairImg from "../../assets/member-yair.jpeg";
+import JulioImg from "../../assets/member-julio.jpg";
+import YairImg from "../../assets/member-yair.jpg";
 
 export const MediaPreview = () => {
   return (

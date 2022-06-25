@@ -2,11 +2,11 @@ import { PageTitle } from "../components/Title";
 import { MemberCard } from "../components/Card";
 
 import SquareImg from "../assets/square-photo.jpg";
-import DiegoImg from "../assets/member-diego.jpeg";
-import DavidImg from "../assets/member-david.png";
-import JulioImg from "../assets/member-julio.jpeg";
+import DiegoImg from "../assets/member-diego.jpg";
+import DavidImg from "../assets/member-david.jpg";
+import JulioImg from "../assets/member-julio.jpg";
 import DanImg from "../assets/member-dan.jpg";
-import YairImg from "../assets/member-yair.jpeg";
+import YairImg from "../assets/member-yair.jpg";
 
 const About = () => {
   return (
