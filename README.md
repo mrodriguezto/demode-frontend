@@ -40,11 +40,11 @@ yarn
 
 ### Start the server
 ```
-npm install
+npm run start
 ```
 or (if you're using yarn):
 ```
-yarn
+yarn start
 ```
 
 It should start running on localhost:3000 🤓
